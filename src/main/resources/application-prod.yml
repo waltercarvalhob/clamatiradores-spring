@@ -1,0 +1,12 @@
+# Ativado via SPRING_PROFILES_ACTIVE=prod (ja configurado no render.yaml).
+spring:
+  thymeleaf:
+    cache: true
+  jpa:
+    properties:
+      hibernate:
+        format_sql: false
+
+logging:
+  level:
+    com.clamatiradores: INFO

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/base}"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title th:text="${pagamentoForm.idPag} != null ? 'Editar Pagamento' : 'Novo Pagamento'">Pagamento</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+	<h1 class="h3 mb-4" th:text="${pagamentoForm.idPag} != null ? 'Editar Pagamento' : 'Novo Pagamento'">Pagamento</h1>
+
+	<div class="alert alert-danger" th:if="${erro}" th:text="${erro}"></div>
+
+	<div class="card mb-3">
+		<div class="card-body py-2">
+			<span class="text-muted small">Socio:</span>
+			<strong th:text="${pagamentoForm.socioNome}"></strong>
+			<span class="text-muted small ms-2" th:text="'CPF ' + ${pagamentoForm.socioCpf}"></span>
+		</div>
+	</div>
+
+	<form method="post" th:object="${pagamentoForm}"
+		  th:action="${pagamentoForm.idPag} != null ? @{/pagamentos/{id}(id=${pagamentoForm.idPag})} : @{/pagamentos}">
+		<input type="hidden" th:field="*{idSocio}">
+
+		<div class="mb-3">
+			<label class="form-label">Pagamento *</label>
+			<input type="text" class="form-control" th:field="*{pagamento}"
+				   th:classappend="${#fields.hasErrors('pagamento')} ? 'is-invalid'">
+			<div class="invalid-feedback" th:if="${#fields.hasErrors('pagamento')}" th:errors="*{pagamento}"></div>
+		</div>
+
+		<div class="mt-4 d-flex gap-2">
+			<button type="submit" class="btn btn-primary">Salvar</button>
+			<a class="btn btn-outline-secondary" th:href="@{/pagamentos}">Cancelar</a>
+		</div>
+	</form>
+
+</div>
+</body>
+</html>

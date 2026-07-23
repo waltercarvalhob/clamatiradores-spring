@@ -1,0 +1,50 @@
+# Blueprint do Render (https://render.com/docs/blueprint-spec).
+# No painel do Render: New > Blueprint > aponte para o repositorio que contem este
+# arquivo. Ele cria o web service (a partir do Dockerfile) e o banco Postgres juntos,
+# ja conectados. Veja DEPLOY.md para o passo a passo completo.
+#
+# Se o Render mudar o formato do Blueprint e este arquivo nao for aceito, crie os
+# dois recursos manualmente pelo painel (New > Web Service, runtime Docker; New >
+# PostgreSQL) e copie as variaveis de ambiente listadas abaixo - o passo a passo
+# manual tambem esta em DEPLOY.md.
+
+databases:
+  - name: clamatiradores-db
+    plan: free
+    databaseName: clamatiradores
+    user: clamatiradores
+
+services:
+  - type: web
+    name: clamatiradores-spring
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /login
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: DB_HOST
+        fromDatabase:
+          name: clamatiradores-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: clamatiradores-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: clamatiradores-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: clamatiradores-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: clamatiradores-db
+          property: password
+      - key: ADMIN_SEED_USERNAME
+        value: admin
+      - key: ADMIN_SEED_PASSWORD
+        generateValue: true

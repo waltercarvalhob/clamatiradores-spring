@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<nav th:fragment="navlinks" class="nav flex-column px-3 py-3">
+	<a class="nav-link fw-semibold" th:href="@{/socios}">Socio</a>
+	<a class="nav-link fw-semibold" th:href="@{/declaracoes}">Declaracao</a>
+	<a class="nav-link fw-semibold" th:href="@{/declaracoes-modprova}">Declaracao Modalidade de Prova</a>
+	<a class="nav-link fw-semibold" th:href="@{/declaracoes-hab}">Declaracao de Habitualidade</a>
+	<a class="nav-link fw-semibold" th:href="@{/habitualidades}">Habitualidade</a>
+	<a class="nav-link fw-semibold" th:href="@{/pagamentos}">Pagamento</a>
+
+	<div class="mt-3 mb-1 text-uppercase small text-muted">Relatorios de Socio</div>
+	<a class="nav-link" th:href="@{/socios/relatorios/ativo}" target="_blank" rel="noopener">Socios Ativos (PDF)</a>
+	<a class="nav-link" th:href="@{/socios/relatorios/inativo}" target="_blank" rel="noopener">Socios Inativos (PDF)</a>
+	<a class="nav-link" th:href="@{/socios/relatorios/clam}" target="_blank" rel="noopener">Relatorio Geral (PDF)</a>
+</nav>
+
+</body>
+</html>

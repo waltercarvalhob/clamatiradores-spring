@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="clamAtiradoesRel" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ff43369a-9e67-47c6-a02f-8564d1cf1acf">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="conClamAtiradores"/>
+	<parameter name="mes" class="java.lang.String"/>
+	<parameter name="ano" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select ano,mes,cr,nome,dataadm,nivel,municao,treinos,municipal,estadual,federal,
+(select count(*) from habitualidade where mes like $P{mes} and ano like $P{ano}) as qtd
+from habitualidade  where mes like $P{mes} and ano like $P{ano}  order by nome
+
+
+]]>
+	</queryString>
+	<field name="ano" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ano"/>
+		<property name="com.jaspersoft.studio.field.label" value="ano"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="habitualidade"/>
+	</field>
+	<field name="mes" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="mes"/>
+		<property name="com.jaspersoft.studio.field.label" value="mes"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="habitualidade"/>
+	</field>
+	<field name="cr" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cr"/>
+		<property name="com.jaspersoft.studio.field.label" value="cr"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="habitualidade"/>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="habitualidade"/>
+	</field>
+	<field name="dataadm" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataadm"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataadm"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="habitualidade"/>
+	</field>
+	<field name="nivel" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nivel"/>
+		<property name="com.jaspersoft.studio.field.label" value="nivel"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="habitualidade"/>
+	</field>
+	<field name="municao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="municao"/>
+		<property name="com.jaspersoft.studio.field.label" value="municao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="habitualidade"/>
+	</field>
+	<field name="treinos" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treinos"/>
+		<property name="com.jaspersoft.studio.field.label" value="treinos"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="habitualidade"/>
+	</field>
+	<field name="municipal" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="municipal"/>
+		<property name="com.jaspersoft.studio.field.label" value="municipal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="habitualidade"/>
+	</field>
+	<field name="estadual" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="estadual"/>
+		<property name="com.jaspersoft.studio.field.label" value="estadual"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="habitualidade"/>
+	</field>
+	<field name="federal" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="federal"/>
+		<property name="com.jaspersoft.studio.field.label" value="federal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="habitualidade"/>
+	</field>
+	<field name="qtd" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="qtd"/>
+		<property name="com.jaspersoft.studio.field.label" value="qtd"/>
+	</field>
+	<variable name="contador" class="java.lang.String" calculation="Sum"/>
+	<variable name="qtd1" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{qtd}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="211" splitType="Stretch">
+			<staticText>
+				<reportElement x="-20" y="37" width="841" height="30" uuid="d942c8cc-b9eb-4e63-b5d0-e3ff5365b929"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<text><![CDATA[CLAM - CLUBE DE ATIRADORES DO MARANHÃO 
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-20" y="57" width="841" height="30" uuid="b6a07153-76a2-47f7-8208-7f2c4bcad4f3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<text><![CDATA[REGISTRO Nº 1363/MA – SFPC/8ª RM 
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-20" y="106" width="841" height="30" uuid="ca0f4593-8109-4db9-a1d1-370b94aacca9"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<text><![CDATA[MAPA RESUMO CONTROLE ATIVIDADES]]></text>
+			</staticText>
+			<image>
+				<reportElement x="377" y="-15" width="50" height="50" uuid="6bf54acf-edde-4c9e-a115-60a115bd9916"/>
+				<imageExpression><![CDATA[Thread.currentThread().getContextClassLoader().getResourceAsStream("relatorio/img/logoclamatiradores.jpg")]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement mode="Transparent" x="-15" y="182" width="825" height="28" uuid="75ce3faf-6abe-485a-b844-5aba0fcff223"/>
+			</rectangle>
+			<line>
+				<reportElement x="61" y="182" width="1" height="28" uuid="a5c4cd08-d095-4234-98d5-75905ba74ad7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="255" y="182" width="1" height="28" uuid="b94a04ca-7115-40d6-9763-0577c757858a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="359" y="182" width="1" height="28" uuid="5aea5d37-d4a0-4c97-ae66-b83c5b48462f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="416" y="182" width="1" height="28" uuid="b5217d94-4679-47cc-9a62-6de7354a13d1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="492" y="182" width="1" height="28" uuid="5349398e-ec22-4f3f-8013-0cb9cd19d7fd">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="559" y="182" width="1" height="28" uuid="b8e5fbc9-4245-4f72-80e6-bd4b207e1e3e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="648" y="182" width="1" height="28" uuid="5fccb838-1c32-4fd3-b5a6-ec2a5d4467f7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="728" y="183" width="1" height="28" uuid="be81e494-edd3-4d6b-8619-1cbd8891ee57">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="-12" y="186" width="71" height="20" uuid="61a620b2-34bc-4e19-8d27-b6f72960dc42"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="62" y="186" width="193" height="20" uuid="5148d361-ce6e-4751-83e6-c31e62de0d2a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NOME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="364" y="185" width="50" height="21" uuid="20de93ab-d08d-46b2-9021-9c9744fc14b6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NIVEL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="184" width="68" height="20" uuid="478dd0db-8cd3-4b5d-9829-afa5f8c2ae48"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[MUNIÇÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="496" y="184" width="58" height="20" uuid="517c026b-5f92-41dd-84f4-045d87fd7021"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[TREINOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="564" y="185" width="80" height="20" uuid="dd96e96e-e932-4a9e-81c1-c2a6d46e5622"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[MUNICIPAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="652" y="185" width="70" height="20" uuid="11554f49-276e-4dbc-b47d-7f8fa026b256"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[ESTADUAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="734" y="186" width="70" height="20" uuid="badace69-8639-46ed-93f8-869f975a43b2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[FEDERAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-17" y="83" width="841" height="23" uuid="1d51f25c-4ccf-4742-bdfa-426c19993a5e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<text><![CDATA[SÃO LUIS – MA ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="337" y="155" width="84" height="20" uuid="f0938cd0-1ca0-40bc-abf0-02c5a6d187f1"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mes}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="261" y="188" width="92" height="20" uuid="43dfa883-b6da-431d-b7d6-dad8f9f8f557"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Data adm]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="425" y="155" width="84" height="20" uuid="37a6e167-ce20-4d6c-aa4e-66a9abd66ba5"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ano}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Transparent" x="-15" y="0" width="825" height="28" uuid="2a8b596a-0879-4dad-a129-29ea4835726b"/>
+			</rectangle>
+			<textField>
+				<reportElement x="-12" y="3" width="70" height="20" uuid="66b80cfa-8c23-4d87-ac71-87fa4a3f1281"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="65" y="4" width="185" height="20" uuid="63454a74-06e8-4591-b8e8-162187746690"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="366" y="4" width="47" height="20" uuid="c4f3caab-4015-4f2e-bc33-8c7bcd3b54fa"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nivel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="424" y="4" width="64" height="20" uuid="51b75d2f-d34e-4bac-b20c-c5fe2078fb58"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{municao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="496" y="4" width="58" height="20" uuid="5a5bf5dc-05b0-4832-9fce-301dc37040dc"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treinos}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="61" y="-1" width="1" height="28" uuid="72255bfa-1011-4b63-9095-8f53ab92b18e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="255" y="-1" width="1" height="28" uuid="5fb2f7e0-a8e2-48b4-bb99-bfafa8a67e00">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="359" y="-1" width="1" height="28" uuid="f1944eff-846b-49e4-a9f9-01edff07bdbe">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="416" y="-1" width="1" height="28" uuid="5dee9618-523b-41c7-9101-f056a247f180">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="492" y="-1" width="1" height="28" uuid="fb34e96b-0fa4-406c-b55a-db09726cd1c4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="559" y="-1" width="1" height="28" uuid="f4a6c170-683d-49d6-8767-47d500c02066">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="648" y="-1" width="1" height="28" uuid="445b0bec-8271-4ef6-a45d-142becee2640">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="728" y="-1" width="1" height="28" uuid="66c11c71-1de9-4a13-9660-f6058b5898a5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<textField>
+				<reportElement x="261" y="5" width="92" height="20" uuid="9cf3ea26-fb6d-4638-aa1a-be9baa245f8a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataadm}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="564" y="4" width="80" height="20" uuid="7bfb926d-50c7-46a4-adc9-baedbb12024e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{municipal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="660" y="4" width="58" height="20" uuid="6962b570-b074-4008-b0bc-dbc5f15cf403"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{estadual}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="741" y="4" width="58" height="20" uuid="b9c911b6-f272-41bb-a369-d2f7c02313eb"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{federal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="311">
+			<textField pattern="&apos;São Luis,&apos;  dd  &apos;de&apos;  MMMM  &apos;de&apos;  yyyy">
+				<reportElement x="180" y="156" width="400" height="21" uuid="59b0d386-e165-4263-bf43-d4623e09c69f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-20" y="55" width="841" height="30" uuid="adbfe9a3-3db4-442d-888c-bc53f7029fe5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<text><![CDATA[CLAM - CLUBE DE ATIRADORES DO MARANHÃO 
+]]></text>
+			</staticText>
+			<image>
+				<reportElement x="377" y="3" width="50" height="50" uuid="12e9d981-c795-4076-b192-0ff1ef92036d"/>
+				<imageExpression><![CDATA[Thread.currentThread().getContextClassLoader().getResourceAsStream("relatorio/img/logoclamatiradores.jpg")]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement mode="Opaque" x="180" y="98" width="401" height="24" backcolor="rgba(255, 255, 255, 0.0)" uuid="92ffb122-6f78-4b22-834f-d4d1bd059e90"/>
+			</rectangle>
+			<line>
+				<reportElement x="380" y="98" width="1" height="23" uuid="b08a1e94-4c88-487d-83b4-98a3af048e3e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="180" y="100" width="201" height="20" uuid="45e763ef-6816-4ffa-b334-0801d3caf1f6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[FILIADOS]]></text>
+			</staticText>
+			<image>
+				<reportElement x="249" y="190" width="274" height="121" uuid="f9f12356-d3dc-4749-82a8-5f507d95e9c3"/>
+				<imageExpression><![CDATA[Thread.currentThread().getContextClassLoader().getResourceAsStream("relatorio/img/assinatura.jpg")]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="440" y="98" width="100" height="23" uuid="2c732bbb-690e-4de1-952f-fb81a8796a87"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qtd}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

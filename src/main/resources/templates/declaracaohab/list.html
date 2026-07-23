@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/base}"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title>Declaracoes de Habitualidade</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+	<div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+		<h1 class="h3 mb-0">Declaracoes de Habitualidade</h1>
+		<a class="btn btn-primary" th:href="@{/socio-picker(target='/declaracoes-hab/novo', targetLabel='Declaracao de Habitualidade')}">+ Nova Declaracao</a>
+	</div>
+
+	<form class="row g-2 mb-4 align-items-end" method="get" th:action="@{/declaracoes-hab}">
+		<div class="col-sm-6 col-md-4">
+			<label class="form-label small mb-1">Nome do Socio</label>
+			<input type="text" class="form-control" name="nome" th:value="${nome}">
+		</div>
+		<div class="col-sm-6 col-md-3">
+			<label class="form-label small mb-1">CPF</label>
+			<input type="text" class="form-control" name="cpf" th:value="${cpf}">
+		</div>
+		<div class="col-md-2 d-flex gap-2">
+			<button type="submit" class="btn btn-outline-primary w-100">Pesquisar</button>
+		</div>
+	</form>
+
+	<div class="table-responsive">
+		<table class="table table-striped table-hover align-middle">
+			<thead>
+				<tr>
+					<th>Socio</th>
+					<th>Data</th>
+					<th>Emissao</th>
+					<th>Validade</th>
+					<th class="text-end">Acoes</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="item : ${page.content}">
+					<td th:text="${item.socio.nome}"></td>
+					<td th:text="${item.dia} + '/' + ${item.mes} + '/' + ${item.ano}"></td>
+					<td th:text="${item.dataemissao}"></td>
+					<td th:text="${item.datavalidade}"></td>
+					<td class="text-end text-nowrap">
+						<div class="btn-group">
+							<button type="button" class="btn btn-sm btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown">PDF</button>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" th:href="@{/declaracoes-hab/{id}/relatorio(id=${item.idDec})}" target="_blank" rel="noopener">Permitido</a></li>
+								<li><a class="dropdown-item" th:href="@{/declaracoes-hab/{id}/relatorio-restrito(id=${item.idDec})}" target="_blank" rel="noopener">Restrito</a></li>
+								<li><a class="dropdown-item" th:href="@{/declaracoes-hab/{id}/relatorio-completo(id=${item.idDec})}" target="_blank" rel="noopener">Completo</a></li>
+							</ul>
+						</div>
+						<a class="btn btn-sm btn-outline-secondary" th:href="@{/declaracoes-hab/{id}/editar(id=${item.idDec})}">Editar</a>
+						<button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+								th:attr="data-bs-target=${'#excluirModal' + item.idDec}">Excluir</button>
+
+						<div class="modal fade" tabindex="-1" th:id="${'excluirModal' + item.idDec}">
+							<div class="modal-dialog">
+								<div class="modal-content text-start">
+									<div class="modal-header">
+										<h5 class="modal-title">Confirmar exclusao</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+									</div>
+									<div class="modal-body">Confirma a exclusao desta declaracao?</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+										<form method="post" th:action="@{/declaracoes-hab/{id}/excluir(id=${item.idDec})}">
+											<button type="submit" class="btn btn-danger">Excluir</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr th:if="${page.empty}">
+					<td colspan="5" class="text-center text-muted py-4">Nenhuma declaracao encontrada.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<nav th:if="${page.totalPages > 1}" aria-label="Paginacao">
+		<ul class="pagination flex-wrap">
+			<li class="page-item" th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}"
+				th:classappend="${i == page.number} ? 'active'">
+				<a class="page-link" th:href="@{/declaracoes-hab(page=${i}, size=${page.size}, nome=${nome}, cpf=${cpf})}" th:text="${i + 1}"></a>
+			</li>
+		</ul>
+	</nav>
+
+</div>
+</body>
+</html>

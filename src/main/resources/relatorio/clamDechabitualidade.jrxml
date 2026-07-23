@@ -1,0 +1,1125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="clamDec" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="46f4d978-f1de-4738-bdcb-9f901bd4884d">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="conClamAtiradores"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="357"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="632"/>
+	<parameter name="nome" class="java.lang.String"/>
+	<parameter name="id_dec" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[select id_dec,socio.id_socio,socio.nome as nome ,socio.numcr,socio.numclam,socio.cpf,REGEXP_REPLACE(md5(socio.cpf),'[[:alpha:]]','','g')as code_identificacao,dia,mes,ano,datainsc,
+local,dataevento,treino_competicao,
+local1,dataevento1,treino_competicao1,
+local2,dataevento2,treino_competicao2,
+local3,dataevento3,treino_competicao3,
+local4,dataevento4,treino_competicao4,
+local5,dataevento5,treino_competicao5,
+local6,dataevento6,treino_competicao6,
+local7,dataevento7,treino_competicao7,
+dataemissao,datavalidade,
+local8,dataevento8,treino_competicao8,
+local9,dataevento9,treino_competicao9,
+local10,dataevento10,treino_competicao10,
+local11,dataevento11,treino_competicao11,
+local12,dataevento12,treino_competicao12,
+local13,dataevento13,treino_competicao13,
+local14,dataevento14,treino_competicao14,
+local15,dataevento15,treino_competicao15,
+local16,dataevento16,treino_competicao16,
+local17,dataevento17,treino_competicao17,
+local18,dataevento18,treino_competicao18,
+local19,dataevento19,treino_competicao19
+from declaracaohab
+inner join socio on socio.id_socio = declaracaohab.id_socio
+where nome  like $P{nome} and id_dec = $P{id_dec}]]>
+	</queryString>
+	<field name="id_dec" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_dec"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_dec"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="id_socio" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_socio"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_socio"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="numcr" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="numcr"/>
+		<property name="com.jaspersoft.studio.field.label" value="numcr"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="numclam" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="numclam"/>
+		<property name="com.jaspersoft.studio.field.label" value="numclam"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="cpf" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cpf"/>
+		<property name="com.jaspersoft.studio.field.label" value="cpf"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="code_identificacao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="code_identificacao"/>
+		<property name="com.jaspersoft.studio.field.label" value="code_identificacao"/>
+	</field>
+	<field name="dia" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dia"/>
+		<property name="com.jaspersoft.studio.field.label" value="dia"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="mes" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="mes"/>
+		<property name="com.jaspersoft.studio.field.label" value="mes"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="ano" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ano"/>
+		<property name="com.jaspersoft.studio.field.label" value="ano"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="datainsc" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="datainsc"/>
+		<property name="com.jaspersoft.studio.field.label" value="datainsc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="local" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="local"/>
+		<property name="com.jaspersoft.studio.field.label" value="local"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataevento" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataevento"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataevento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="treino_competicao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treino_competicao"/>
+		<property name="com.jaspersoft.studio.field.label" value="treino_competicao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="local1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="local1"/>
+		<property name="com.jaspersoft.studio.field.label" value="local1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataevento1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataevento1"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataevento1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="treino_competicao1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treino_competicao1"/>
+		<property name="com.jaspersoft.studio.field.label" value="treino_competicao1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="local2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="local2"/>
+		<property name="com.jaspersoft.studio.field.label" value="local2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataevento2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataevento2"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataevento2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="treino_competicao2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treino_competicao2"/>
+		<property name="com.jaspersoft.studio.field.label" value="treino_competicao2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="local3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="local3"/>
+		<property name="com.jaspersoft.studio.field.label" value="local3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataevento3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataevento3"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataevento3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="treino_competicao3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treino_competicao3"/>
+		<property name="com.jaspersoft.studio.field.label" value="treino_competicao3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="local4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="local4"/>
+		<property name="com.jaspersoft.studio.field.label" value="local4"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataevento4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataevento4"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataevento4"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="treino_competicao4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treino_competicao4"/>
+		<property name="com.jaspersoft.studio.field.label" value="treino_competicao4"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="local5" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="local5"/>
+		<property name="com.jaspersoft.studio.field.label" value="local5"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataevento5" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataevento5"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataevento5"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="treino_competicao5" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treino_competicao5"/>
+		<property name="com.jaspersoft.studio.field.label" value="treino_competicao5"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="local6" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="local6"/>
+		<property name="com.jaspersoft.studio.field.label" value="local6"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataevento6" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataevento6"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataevento6"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="treino_competicao6" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treino_competicao6"/>
+		<property name="com.jaspersoft.studio.field.label" value="treino_competicao6"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="local7" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="local7"/>
+		<property name="com.jaspersoft.studio.field.label" value="local7"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataevento7" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataevento7"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataevento7"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="treino_competicao7" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treino_competicao7"/>
+		<property name="com.jaspersoft.studio.field.label" value="treino_competicao7"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataemissao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataemissao"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataemissao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="datavalidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="datavalidade"/>
+		<property name="com.jaspersoft.studio.field.label" value="datavalidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="local8" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="local8"/>
+		<property name="com.jaspersoft.studio.field.label" value="local8"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataevento8" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataevento8"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataevento8"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="treino_competicao8" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treino_competicao8"/>
+		<property name="com.jaspersoft.studio.field.label" value="treino_competicao8"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="local9" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="local9"/>
+		<property name="com.jaspersoft.studio.field.label" value="local9"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataevento9" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataevento9"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataevento9"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="treino_competicao9" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treino_competicao9"/>
+		<property name="com.jaspersoft.studio.field.label" value="treino_competicao9"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="local10" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="local10"/>
+		<property name="com.jaspersoft.studio.field.label" value="local10"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataevento10" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataevento10"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataevento10"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="treino_competicao10" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treino_competicao10"/>
+		<property name="com.jaspersoft.studio.field.label" value="treino_competicao10"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="local11" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="local11"/>
+		<property name="com.jaspersoft.studio.field.label" value="local11"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataevento11" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataevento11"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataevento11"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="treino_competicao11" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treino_competicao11"/>
+		<property name="com.jaspersoft.studio.field.label" value="treino_competicao11"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="local12" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="local12"/>
+		<property name="com.jaspersoft.studio.field.label" value="local12"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataevento12" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataevento12"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataevento12"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="treino_competicao12" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treino_competicao12"/>
+		<property name="com.jaspersoft.studio.field.label" value="treino_competicao12"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="local13" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="local13"/>
+		<property name="com.jaspersoft.studio.field.label" value="local13"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataevento13" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataevento13"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataevento13"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="treino_competicao13" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treino_competicao13"/>
+		<property name="com.jaspersoft.studio.field.label" value="treino_competicao13"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="local14" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="local14"/>
+		<property name="com.jaspersoft.studio.field.label" value="local14"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataevento14" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataevento14"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataevento14"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="treino_competicao14" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treino_competicao14"/>
+		<property name="com.jaspersoft.studio.field.label" value="treino_competicao14"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="local15" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="local15"/>
+		<property name="com.jaspersoft.studio.field.label" value="local15"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataevento15" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataevento15"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataevento15"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="treino_competicao15" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treino_competicao15"/>
+		<property name="com.jaspersoft.studio.field.label" value="treino_competicao15"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="local16" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="local16"/>
+		<property name="com.jaspersoft.studio.field.label" value="local16"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataevento16" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataevento16"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataevento16"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="treino_competicao16" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treino_competicao16"/>
+		<property name="com.jaspersoft.studio.field.label" value="treino_competicao16"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="local17" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="local17"/>
+		<property name="com.jaspersoft.studio.field.label" value="local17"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataevento17" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataevento17"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataevento17"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="treino_competicao17" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treino_competicao17"/>
+		<property name="com.jaspersoft.studio.field.label" value="treino_competicao17"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="local18" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="local18"/>
+		<property name="com.jaspersoft.studio.field.label" value="local18"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataevento18" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataevento18"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataevento18"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="treino_competicao18" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treino_competicao18"/>
+		<property name="com.jaspersoft.studio.field.label" value="treino_competicao18"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="local19" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="local19"/>
+		<property name="com.jaspersoft.studio.field.label" value="local19"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="dataevento19" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataevento19"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataevento19"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<field name="treino_competicao19" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="treino_competicao19"/>
+		<property name="com.jaspersoft.studio.field.label" value="treino_competicao19"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaohab"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="55" splitType="Stretch">
+			<image>
+				<reportElement x="255" y="-18" width="45" height="45" uuid="f2d4bfdb-c48b-4944-8d4e-3f142a9833ba">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA[Thread.currentThread().getContextClassLoader().getResourceAsStream("relatorio/img/logoclamatiradores.jpg")]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="27" width="554" height="18" uuid="fc2434e4-2e85-4e72-a15e-22b0b8016941"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLAM - CLUBE DE ATIRADORES DO MARANHÃO]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="747" splitType="Stretch">
+			<textField textAdjust="ScaleFont">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="1" y="95" width="554" height="53" uuid="7193008c-797a-4931-a2bf-fea36fb3ded1"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Arial" size="12" isBold="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["tiro  desportivo  junto  ao  Exército Brasileiro que " + ""+$F{nome}+","+" "+"CR nº"+" "+$F{numcr}+","+" "+" estar regularmente"+" "+"inscrito nesta Entidade sob o nº"+" "+$F{numclam}+","+" "+" datado desde"+" "+$F{dia}+" "+"de"+" "+$F{mes}+" "+"de"+" "+$F{ano}+"."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="540" width="261" height="18" uuid="03aae553-062b-40ab-9605-fc27eeee8783"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Esta declaração tem validade de 90 dias.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="338" y="562" width="198" height="24" uuid="048cf825-c809-470a-bc5c-808fa4364c7e"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{datainsc}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="268" y="562" width="66" height="24" uuid="1abb228b-a38f-452a-a4cc-ecb12053dd1b"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[São Luís,]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="177" width="555" height="22" backcolor="rgba(255, 255, 255, 0.0)" uuid="fe1f3fda-c6f1-4525-9e73-4dc8c74780a2"/>
+			</rectangle>
+			<line>
+				<reportElement x="162" y="178" width="1" height="20" uuid="3d5cc3cd-23c6-414e-b00d-c24f833c8f91"/>
+			</line>
+			<line>
+				<reportElement x="315" y="178" width="1" height="20" uuid="3c1b61fc-0717-4001-bd63-9373d19baac0"/>
+			</line>
+			<staticText>
+				<reportElement x="-1" y="177" width="163" height="21" uuid="305c9e29-7828-4971-a4f9-d6801f8f9b5a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[LOCAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="164" y="178" width="151" height="21" uuid="ca47c280-9bff-4bac-9f9d-d0d04c6a8f06"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[DATA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="178" width="230" height="21" uuid="0402dd9a-22ab-4325-995f-5d91faead02b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[EVENTO (TREINO/COMPETIÇÃO)]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="199" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="1d39c3e4-7c95-40ee-a3be-fcc4def92099">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="162" y="199" width="1" height="20" uuid="d2a3c240-d33c-4708-ab67-2043e631c191"/>
+			</line>
+			<line>
+				<reportElement x="315" y="199" width="1" height="20" uuid="75354fce-7515-483a-b858-a728b934815c"/>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="215" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="01dc3889-e3c6-45a0-b6be-b3a3b3d811b5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="162" y="219" width="1" height="20" uuid="026a6493-574f-48a0-acdf-209756fda488"/>
+			</line>
+			<line>
+				<reportElement x="315" y="219" width="1" height="20" uuid="130a08d3-eaff-4bd4-9e83-e4f122374bd2"/>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="231" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="62be7f74-5312-4470-ab95-a1a3746a79d9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="162" y="239" width="1" height="20" uuid="e8e4cd3c-2529-4432-8b38-e2a0bbac1c64"/>
+			</line>
+			<line>
+				<reportElement x="315" y="239" width="1" height="20" uuid="755a8252-d9a7-4813-867f-b5459cd12b8d"/>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="246" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="3ed68c26-2bc0-4275-b246-5abd1aca0241">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="162" y="258" width="1" height="20" uuid="45581e34-c142-44a5-8d5d-aeef52a61419"/>
+			</line>
+			<line>
+				<reportElement x="315" y="258" width="1" height="20" uuid="b2113120-e8c2-41c2-b369-623920c4471f"/>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="261" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="42f65abc-2fcd-4c1b-b4f2-551bbfc44b6a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="162" y="277" width="1" height="15" uuid="f4202d5b-4257-4c38-a87a-e7ad013f95b4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="315" y="277" width="1" height="15" uuid="3f1f081c-d6b8-4b30-bde6-ba8f078135a5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="276" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="bd4b2180-9812-4bf0-84a9-92d73fc47c79">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="162" y="292" width="1" height="15" uuid="adcf8584-694a-4a73-b94b-a6336c518d55">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="315" y="292" width="1" height="15" uuid="aa495e91-ec4c-48ca-8a2f-dce526904502">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="291" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="b0014ca6-e849-42ab-bf24-c6f0c7de7327">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="162" y="305" width="1" height="15" uuid="a0bc493b-54b2-4387-9582-2ff67cffb3ef">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="315" y="305" width="1" height="15" uuid="64174c36-3d0f-469e-acf5-d31942b4fdd9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="306" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="5ffc7e26-154f-4f89-906f-7692c2585d64">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="511" width="554" height="30" uuid="f2d9a5a6-baf7-4ff9-87a6-e8866d07eef4"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Os registros que comprovam as informações acima do referido atirador desportivo estão disponíveis,a qualquer momento, paraafiscalização de produtos controlados.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="4" y="200" width="155" height="14" uuid="506a7f4b-21d0-4da3-84b8-6f995eb9a745"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{local}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="200" width="150" height="14" uuid="428c19c7-1c87-4148-b2c3-727700ca20d6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataevento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="200" width="238" height="14" uuid="eac316f1-4c44-41d8-bd2c-5cb2d9c2c2b1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treino_competicao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="216" width="155" height="14" uuid="92f23ebd-2097-49aa-8076-7dd5364f9c13"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{local1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="163" y="216" width="149" height="14" uuid="e48d4daf-6b06-4a0f-a233-456acb0a8f9f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataevento1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="315" y="216" width="238" height="14" uuid="4ff3bc28-2ca5-4173-8719-2c65e283dcdc"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treino_competicao1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="163" y="232" width="149" height="14" uuid="20c3a1c5-fa01-46ba-8321-d37415180929"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataevento2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="315" y="232" width="238" height="14" uuid="3262c82d-1d7c-4d3e-99ac-5aef75bfdc68"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treino_competicao2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="232" width="155" height="14" uuid="a6122c75-42fd-4598-bd4c-26e08277fdd8"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{local2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="246" width="155" height="14" uuid="906815f7-474a-4f05-aa5a-323c741c769e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{local3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="163" y="246" width="149" height="14" uuid="5327ccb0-8d8c-4b76-aec0-5b9d00c336fa"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataevento3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="315" y="246" width="238" height="14" uuid="fc5af12b-4b0f-433a-b628-7fd676730de7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treino_competicao3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="261" width="155" height="14" uuid="aebd2609-8fa5-46e1-bac8-c45f86163869"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{local4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="163" y="261" width="149" height="14" uuid="daa5ca9a-d580-456c-bf01-d030ebca827e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataevento4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="315" y="261" width="239" height="14" uuid="f4d9d39e-3513-43e0-9ec9-8f3db1a257cf"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treino_competicao4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="277" width="155" height="14" uuid="259abdd1-4a38-465f-bfda-8971bea0ed73"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{local5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="277" width="149" height="14" uuid="61e4c0c8-1d80-4703-8a6c-6eb65097ed66"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataevento5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="315" y="277" width="239" height="14" uuid="3c81d0e0-84ef-4de4-b335-3d108fdd33af"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treino_competicao5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="292" width="149" height="14" uuid="ecbe6c9a-f3ff-4112-a9a6-39e0758e2424"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataevento6}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="292" width="155" height="14" uuid="c65ebb3a-81e2-4f55-8551-9700949a7fc8"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{local6}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="292" width="238" height="14" uuid="7a7f7ca5-8b7e-47d1-b666-c373a0565a9f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treino_competicao6}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="306" width="155" height="14" uuid="11b2b255-a879-4d4c-a94e-73aa042b4d17"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{local7}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="306" width="149" height="14" uuid="f5c4011c-aab4-4a07-96e7-2904e6e92865"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataevento7}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="306" width="238" height="14" uuid="00b5c8d5-c2cf-49bf-ab9a-7531130a7dd3"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treino_competicao7}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="104" y="653" width="135" height="94" uuid="b3ef3020-8c6c-4152-9e24-5667892c707b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<jr:codeExpression><![CDATA["Clube Emitente:"+" "+"Clube de Atiradores do Maranhão - CLAM"+"\n"+"CR Clube:"+" "+"1363"+"\n"+"CNPJ Clube:"+" "+"02.322.509/0001-86 "+"\n"+"Nº Declaração:"+" "+$F{code_identificacao}+"\n"+"Data Emissão:"+" "+$F{dataemissao}+"\n"+"Data Validade:"+" "+$F{datavalidade}+"\n"+"Tipo de  Declaração:"+" "+"Declaração de Habitualidade"+"\n"+"Nome do Associado:"+" "+$F{nome}+"\n"+"CPF:"+" "+$F{cpf}+"\n"+"Carteira do Clam:"+" "+$F{numclam}+"\n"+"CR:"+" "+$F{numcr}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
+			<textField>
+				<reportElement x="323" y="710" width="199" height="16" uuid="de26d739-c3ae-4a9b-8e07-af73f4e62adf"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{code_identificacao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="662" width="100" height="84" uuid="f1b7795c-f454-490c-990f-be1f3ad0620a"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Este QRCode pode
+ser lido por
+qualquer app em
+seu celular ou
+tablet e consultará
+diretamente a
+página de validação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="323" y="692" width="200" height="15" uuid="87b84f01-e86b-428b-8fe9-b597ff709a80">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código de Autenticação]]></text>
+			</staticText>
+			<textField pattern="dd/MM /yyyy hh:mm:ss">
+				<reportElement x="396" y="726" width="142" height="20" uuid="f9799d0d-9c5f-4e2a-a1c0-a9d43095f904"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="334" y="726" width="61" height="21" uuid="4aeb95ee-4410-484e-b127-efd34d4ae6a3"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[emitido em]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="615" width="400" height="18" uuid="7f9e764d-de34-403a-98d7-304b74a8fbc4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAGIB JORGE FERES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="634" width="400" height="18" uuid="3c028e46-a03b-4cf0-aba1-b097691eb79a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[Presidente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="39" width="556" height="73" uuid="fc91d098-6dc9-4c16-8a7f-5d4b29da3676"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[CLUBE DE ATIRADORES DO MARANHÃO – CLAM, inscrito no CNPJ/MF sob o nº 02.322.509/0001-86 e Certificado de Registro nº 1363/MA – SFPC/8ª RM, com sede na Rua Afonso Pena, 291 – Centro, CEP: 65010-030, São Luis - MA, DECLARA,  para  fim   de comprovação de habitualidade de prática de ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="14" width="556" height="20" uuid="b06f953e-2bb9-4902-bcfb-68a0eb3e229c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DECLARAÇÃO DE HABITUALIDADE]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="320" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="59b0680e-32f0-4752-a063-5d8cbc24e903">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="162" y="320" width="1" height="20" uuid="3daa5b9f-e9ff-45d2-854f-530a8b39eca2"/>
+			</line>
+			<line>
+				<reportElement x="315" y="320" width="1" height="20" uuid="eb9c44a2-c283-4b0d-a9cd-02af4e0e978e"/>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="336" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="717b5dda-22e3-4c88-8ba6-85ba30238304">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="162" y="340" width="1" height="20" uuid="4b10c087-ac12-4812-b614-dcab27387fa8"/>
+			</line>
+			<line>
+				<reportElement x="315" y="340" width="1" height="20" uuid="7524811e-7c46-4e94-aae5-b96975aeff9d"/>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="352" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="8ca75edf-6a2b-47ba-a57b-b9be3dceb3eb">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="162" y="360" width="1" height="20" uuid="5fee5890-9675-4abf-b540-14fbe2187927"/>
+			</line>
+			<line>
+				<reportElement x="315" y="360" width="1" height="20" uuid="91883cd7-16af-4050-ab1d-b960b4e3bd3e"/>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="367" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="f9ff206d-41e1-41f3-a850-0cc584cb9af6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="162" y="379" width="1" height="20" uuid="525fda81-8e06-4e50-b0f4-0471ea03870f"/>
+			</line>
+			<line>
+				<reportElement x="315" y="379" width="1" height="20" uuid="f638c460-6445-41f8-9aae-99e8b9c8c4a6"/>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="382" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="62263dcd-2add-4f9d-9794-430f32dc437b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="162" y="398" width="1" height="15" uuid="111c4ecc-ead2-44c2-973a-eba20c44a59f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="315" y="398" width="1" height="15" uuid="3b7185f1-bdba-4b2e-83f6-905958fd39d2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="397" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="e9f3a3e7-8bf7-45bb-ba0c-107435c0308a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="162" y="413" width="1" height="15" uuid="1d9220f7-5857-4015-9bd0-a4290534fbb4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="315" y="413" width="1" height="15" uuid="13bba8b3-dc59-4ac9-81ce-2f3366a98869">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="412" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="9f62fcf6-9641-4d20-b898-a76efdd54214">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="162" y="426" width="1" height="15" uuid="aaeeb84e-b2b4-4dc3-b718-4a2e70c8e112">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="315" y="426" width="1" height="15" uuid="99652f42-ac3b-42da-b9ba-ac393963835e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="427" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="75a78f8b-6881-43c1-84c9-2bcc104b9d98">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<textField>
+				<reportElement x="4" y="321" width="155" height="14" uuid="451014ee-04f1-45af-bc72-7178cdc47024"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{local8}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="321" width="150" height="14" uuid="e1b8189e-43c4-4ab4-8b82-b38258f1c703"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataevento8}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="321" width="238" height="14" uuid="32a0902c-d6b7-4a12-ac1f-fc87c1f2add1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treino_competicao8}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="337" width="155" height="14" uuid="0c0b84e5-29ea-44db-9a89-a896cbdd1b92"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{local9}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="163" y="337" width="149" height="14" uuid="15187e3f-866b-4f36-b8aa-a9ec2905cfff"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataevento9}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="315" y="337" width="238" height="14" uuid="b022edf4-388d-4da3-ba0e-fe6dd5ef1086"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treino_competicao9}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="163" y="353" width="149" height="14" uuid="cd60f19a-4e78-4dcc-b9d5-b756faaffbf4"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataevento10}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="315" y="353" width="238" height="14" uuid="43ed1c54-1e1a-4a11-aad1-74c252119ed7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treino_competicao10}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="353" width="155" height="14" uuid="7bdcc79e-3e07-443d-b498-3a4af391092f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{local10}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="367" width="155" height="14" uuid="64583eab-5b05-469a-8fab-c214c18ddb40"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{local11}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="163" y="367" width="149" height="14" uuid="0761a919-4c73-4976-88df-5184b8bf917e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataevento11}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="315" y="367" width="238" height="14" uuid="2b7c5eed-cb00-4b3f-99f3-1369d087d04e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treino_competicao11}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="382" width="155" height="14" uuid="2916306e-0162-4835-b2a3-c5a5c9668e60"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{local12}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="163" y="382" width="149" height="14" uuid="b68bfb31-c691-4588-8434-f5fda91fceb5"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataevento12}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="315" y="382" width="239" height="14" uuid="f594da5d-c2f9-46c3-a4ac-44e121b70697"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treino_competicao12}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="398" width="155" height="14" uuid="65680a29-2c63-4aec-988e-be98b71575d2"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{local13}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="398" width="149" height="14" uuid="86ef4cfa-c383-4993-83c8-8b90b0f023bf"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataevento13}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="315" y="398" width="239" height="14" uuid="acb63c4b-d65f-44aa-ab84-93b6ad920b4b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treino_competicao13}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="413" width="149" height="14" uuid="6a92483b-dca1-4a7b-86b9-f04e953e168a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataevento14}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="413" width="155" height="14" uuid="8b05ceff-93c1-484a-adc6-b774c9637809"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{local14}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="413" width="238" height="14" uuid="66afd63e-b5b4-4730-8445-885aacca2bd8"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treino_competicao14}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="427" width="155" height="14" uuid="32427f62-2b60-4e2c-ab74-6e4b86173e12"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{local15}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="427" width="149" height="14" uuid="80c9ffc7-e148-4f4c-b1e3-e55b5cefb202"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataevento15}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="427" width="238" height="14" uuid="dc9b1da4-c3ec-4b26-be67-be32bacf786e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treino_competicao15}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="162" y="440" width="1" height="20" uuid="bdb17623-97ae-41cb-a5c8-fbb43a5a0211"/>
+			</line>
+			<line>
+				<reportElement x="315" y="440" width="1" height="20" uuid="b649f3bc-511a-4da2-a586-c0c04727b2fd"/>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="443" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="e054b45c-8f6c-473e-8d0c-eedc37206f56">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="162" y="459" width="1" height="15" uuid="bccaeda4-b063-42e2-b571-f2b0b63c9ef3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="315" y="459" width="1" height="15" uuid="40678cb2-c8d7-4839-bb03-31bfffaf40f7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="458" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="62b3e7b2-02a3-4341-9d12-1a99a2106282">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="162" y="474" width="1" height="15" uuid="d8b316b8-42d5-488f-9954-65ac48f429e3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="315" y="474" width="1" height="15" uuid="43bd5260-34ab-49f8-9dc7-d2d7ad45128f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="473" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="b945a966-8347-47f1-8920-cc0001860e87">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="162" y="487" width="1" height="15" uuid="8f4140e0-1dbb-40c0-9fdf-726b699daadb">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="315" y="487" width="1" height="15" uuid="5d347474-587d-4742-972e-30379a0b084c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="-1" y="488" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="9e6a4cf7-be88-425a-a026-3000739896b7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<textField>
+				<reportElement x="1" y="443" width="155" height="14" uuid="5ba559ee-8c5c-44e7-8bfa-64170b188910"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{local16}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="163" y="443" width="149" height="14" uuid="6377bf35-6b7c-4ee9-b026-5f0c45e12476"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataevento16}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="315" y="443" width="239" height="14" uuid="2335bdcf-9d62-4d4f-855d-584739aa8c1c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treino_competicao16}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="459" width="155" height="14" uuid="5108abe3-d85b-4179-aca6-c9ae8661d44c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{local17}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="459" width="149" height="14" uuid="a45531d7-c56b-4079-9404-1f50fe2422e5"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataevento17}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="315" y="459" width="239" height="14" uuid="94d7ef6e-6423-43ce-9825-14804b36e6f8"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treino_competicao17}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="474" width="149" height="14" uuid="b4c77a29-7dab-49a9-9095-671830e26991"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataevento18}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="474" width="155" height="14" uuid="7f6bf8b2-5436-4781-8080-ff8aa163b123"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{local18}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="474" width="238" height="14" uuid="347c8896-e4a2-4e41-8ebf-1bfac57535d5"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treino_competicao18}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="488" width="155" height="14" uuid="70b5fe7a-c2d6-4145-9a60-fbab2de706f2"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{local19}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="488" width="149" height="14" uuid="e0d4f20a-efc7-4e12-b2cd-f101dff6bc8c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataevento19}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="488" width="238" height="14" uuid="5f0828d9-b5a0-4769-aaae-78a834bc70c6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{treino_competicao19}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="156" width="555" height="15" uuid="326359fe-5494-4e31-8629-f2be64a030de"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Participou dos seguintes treinamentos ou competições nesta entidade de tiro.]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

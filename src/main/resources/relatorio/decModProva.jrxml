@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="decModProva" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="56ca662a-83e5-4b8d-a488-79d944f7ad93">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="conClamAtiradores"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="390"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="599"/>
+	<parameter name="nome" class="java.lang.String"/>
+	<parameter name="id_decmodprova" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[select id_decmodprova,socio.id_socio,socio.nome as nome ,socio.cpf,socio.numcr,socio.numclam,REGEXP_REPLACE(md5(socio.cpf),'[[:alpha:]]','','g')as code_identificacao,dia,mes,ano,dataatual,dataemissao,datavalidade from declaracaomodprova
+inner join socio on socio.id_socio = declaracaomodprova.id_socio
+where nome  like $P{nome} and id_decmodprova = $P{id_decmodprova}]]>
+	</queryString>
+	<field name="id_decmodprova" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_decmodprova"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_decmodprova"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaomodprova"/>
+	</field>
+	<field name="id_socio" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_socio"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_socio"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="cpf" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cpf"/>
+		<property name="com.jaspersoft.studio.field.label" value="cpf"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="numcr" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="numcr"/>
+		<property name="com.jaspersoft.studio.field.label" value="numcr"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="numclam" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="numclam"/>
+		<property name="com.jaspersoft.studio.field.label" value="numclam"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="code_identificacao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="code_identificacao"/>
+		<property name="com.jaspersoft.studio.field.label" value="code_identificacao"/>
+	</field>
+	<field name="dia" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dia"/>
+		<property name="com.jaspersoft.studio.field.label" value="dia"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaomodprova"/>
+	</field>
+	<field name="mes" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="mes"/>
+		<property name="com.jaspersoft.studio.field.label" value="mes"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaomodprova"/>
+	</field>
+	<field name="ano" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ano"/>
+		<property name="com.jaspersoft.studio.field.label" value="ano"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaomodprova"/>
+	</field>
+	<field name="dataatual" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataatual"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataatual"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaomodprova"/>
+	</field>
+	<field name="dataemissao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dataemissao"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataemissao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaomodprova"/>
+	</field>
+	<field name="datavalidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="datavalidade"/>
+		<property name="com.jaspersoft.studio.field.label" value="datavalidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="declaracaomodprova"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="54" splitType="Stretch">
+			<image>
+				<reportElement x="255" y="-19" width="50" height="50" uuid="a373112d-5c02-4d7f-a510-8e98de6171f3"/>
+				<imageExpression><![CDATA[Thread.currentThread().getContextClassLoader().getResourceAsStream("relatorio/img/logoclamatiradores.jpg")]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="-20" y="30" width="595" height="18" uuid="a540b133-1c11-4be1-814d-4585b7567c5c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLAM - CLUBE DE ATIRADORES DO MARANHÃO]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="748" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="450" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="e5c5da5a-4577-4f94-b3e4-10c8d5442be3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="434" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="6d331696-81b1-441e-beb4-94d634ffc4db">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="419" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="31eb7395-a761-4576-bbab-5cf562d5ae2f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="-1" y="127" width="559" height="52" uuid="30377e06-896f-432c-9b3e-09801fd22f04"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="14"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[         CLUBE DE ATIRADORES DO MARANHÃO – CLAM, inscrito no CNPJ/MF sob o nº 02.322.509/0001-86  e  Certificado  de  Registro nº 1363/MA   –   SFPC/8ª RM, com sede]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="79" width="555" height="20" uuid="7111c493-8d7c-4fb4-a369-458c45c88da0"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DECLARAÇÃO DE MODALIDADE E PROVA]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="306" width="555" height="22" backcolor="rgba(255, 255, 255, 0.0)" uuid="1defa2cb-60c2-41d9-aaf0-25c004a41824"/>
+			</rectangle>
+			<line>
+				<reportElement x="130" y="307" width="1" height="20" uuid="58f037cc-e2c9-4bdd-8b3a-f220d935a489"/>
+			</line>
+			<line>
+				<reportElement x="254" y="307" width="1" height="20" uuid="0c4338b0-4163-4c4a-b993-1556b8e59ec2"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="306" width="130" height="21" uuid="5a121d8a-a72d-4e4a-ac4b-853649a49f48"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[PROVA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="307" width="124" height="21" uuid="0354b2e5-dfdc-459c-9796-bbb2f90f41e3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[MODALIDADE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="307" width="294" height="21" uuid="5c52cf36-4ffa-496b-a36a-71f524304b74"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[ARMAMENTO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="328" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="e4a1094c-8708-4c21-beae-7bb42c6b5482">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="130" y="328" width="1" height="20" uuid="cd5fd11c-8519-46ec-a3e8-ecf5617d2841"/>
+			</line>
+			<line>
+				<reportElement x="254" y="328" width="1" height="20" uuid="5f82222f-25b9-44b4-9f1b-86b803ade731"/>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="344" width="555" height="29" backcolor="rgba(255, 255, 255, 0.0)" uuid="f5180604-f173-4aca-9f13-2ea0a3297bc1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="130" y="361" width="1" height="20" uuid="859e24d5-e485-46fd-8398-0f2b919066a5"/>
+			</line>
+			<line>
+				<reportElement x="254" y="362" width="1" height="20" uuid="201e5256-02cd-4110-85c9-202a9f945441"/>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="374" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="b3e0d0da-f723-4b36-aa72-ee7890d361ef">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="130" y="382" width="1" height="20" uuid="8d215042-89a7-41cf-9f3a-e501426a9282"/>
+			</line>
+			<line>
+				<reportElement x="254" y="382" width="1" height="20" uuid="d77a6ff7-2613-4847-86c8-7f12cf5f61f0"/>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="389" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="5145c4cc-965d-456e-bbee-0e26806924ca">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="130" y="401" width="1" height="20" uuid="65c1abc8-792a-4157-ae8e-a7640d559d03"/>
+			</line>
+			<line>
+				<reportElement x="254" y="401" width="1" height="20" uuid="538ab880-d10b-4129-bca4-30af5699db1c"/>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="404" width="555" height="15" backcolor="rgba(255, 255, 255, 0.0)" uuid="43afe4ac-5a0d-4f7b-a42d-80fab0f0fc81">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<line>
+				<reportElement x="130" y="420" width="1" height="15" uuid="eb94b413-65bb-4831-ba3c-e578107572c9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="254" y="420" width="1" height="15" uuid="b6d021b6-d3c7-48c5-9329-7c1967aafce7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="130" y="435" width="1" height="15" uuid="b6519283-a73e-4a3b-aaf5-082fa5605756">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="254" y="435" width="1" height="15" uuid="5d3b7911-2b90-4019-99c8-9c50c268f21c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="472" width="261" height="20" uuid="248a692f-8e42-411d-95a5-4b7e780900ac"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[Esta declaração tem validade de 90 dias.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="522" width="198" height="24" uuid="8c351bd1-36a2-49b6-99fe-9df0e06928d6"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dataatual}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="210" y="522" width="66" height="24" uuid="7761d356-e586-4715-b0dd-facfaadcb7ec"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[São Luís,]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="105" y="620" width="144" height="125" uuid="1058b197-6766-4f38-83cd-ca654ea57c9b"/>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<jr:codeExpression><![CDATA["Clube Emitente:"+" "+"Clube de Atiradores do Maranhão - CLAM"+"\n"+"CR Clube:"+" "+"1363"+"\n"+"CNPJ Clube:"+" "+"02.322.509/0001-86 "+"\n"+"Nº Declaração:"+" "+$F{code_identificacao}+"\n"+"Data Emissão:"+" "+$F{dataemissao}+"\n"+"Data Validade:"+" "+$F{datavalidade}+"\n"+"Tipo de  Declaração:"+" "+"Declaração de Modalidade e Prova"+"\n"+"Nome do Associado:"+" "+$F{nome}+"\n"+"CPF:"+" "+$F{cpf}+"\n"+"Carteira do Clam:"+" "+$F{numclam}+"\n"+"CR:"+" "+$F{numcr}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
+			<textField>
+				<reportElement x="323" y="683" width="199" height="16" uuid="87ff3613-7967-402d-9317-f947bbff28bd"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{code_identificacao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="654" width="100" height="88" uuid="8f369afd-38d8-416a-9aac-9d0b5324ddad"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Este QRCode pode
+ser lido por
+qualquer app em
+seu celular ou
+tablet e consultará
+diretamente a
+página de validação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="323" y="663" width="200" height="20" uuid="95264838-b069-43fc-8371-4c77c3ec5591"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código de Autenticação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="329" width="128" height="13" uuid="9f1df9d0-435d-4925-92a8-249c8d62cf56"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Revolver calibre menor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="330" width="120" height="13" uuid="c17c5037-7a36-4c5d-9a19-cea5e65935ef"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Duelo 20 segundos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="258" y="330" width="301" height="13" uuid="56a70276-a3ea-4a1f-ae34-25f0cfe2de5a"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[.22LR ,6.35 mm, 32 SW]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="258" y="345" width="301" height="13" uuid="252fa461-5154-4439-a001-5f49523775c0"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[.38SPL, 357mag, 9mm, 40Sw .410, 357, 44-40 win, 44 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="345" width="118" height="29" uuid="e2f145e5-e5b3-4725-b6ca-536de11bae32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Duelo 20 segundos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="344" width="128" height="29" uuid="a113e944-cdb3-4a68-a28b-44f281d0c102"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Revolver calibre maior]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="375" width="128" height="13" uuid="9df38c9c-9a00-4bd1-8991-a247383cf1ae"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Revolver snub 2” e 3”]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="134" y="376" width="120" height="13" uuid="0e1dfa22-465c-4666-8bd7-ffca1ad08fa4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Duelo 20 segundos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="256" y="376" width="305" height="13" uuid="810c817b-2fbe-4b56-828b-485fab916d48"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[.38 SPL       357mag]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="134" y="391" width="120" height="13" uuid="f400bc90-3c47-4ccb-a3f9-5112ac06a3d8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Duelo 20 segundos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="256" y="391" width="302" height="13" uuid="9bd920bf-6553-4a97-a71a-493855c6ac50"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[.22LR ,6.35 mm, 32 SW]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="390" width="128" height="13" uuid="fba9c22a-9a25-4b40-904e-1e01563e6e90"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Pistola calibre menor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="134" y="405" width="120" height="13" uuid="c4871fc6-e653-4280-888b-64c4eb42bf5b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Duelo 20 segundos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="254" y="405" width="305" height="13" uuid="bbbdc4b4-f438-4673-bd07-5d1e99e7d177"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[38 super auto, 380ACP .40sw, .45auto, 10 mm ,9mm, 357sig.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="404" width="128" height="13" uuid="8923f979-ed4e-48f9-bc14-0e9135abe885"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Pistola calibre maior]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="258" y="421" width="300" height="13" uuid="22669191-3222-4e07-a6c2-1bb2614a4532"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[.22 LR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="420" width="128" height="13" uuid="f4f56a51-cbd0-4dcb-b1ed-3159151f97fc"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Carabina mira aberta especial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="134" y="421" width="120" height="13" uuid="e89bed54-9341-4f51-8bbd-45b068298651"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Duelo 20 segundos]]></text>
+			</staticText>
+			<line>
+				<reportElement x="130" y="451" width="1" height="15" uuid="d90fa57c-c4c8-4a91-96ae-032d0e68f7bf">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="254" y="451" width="1" height="15" uuid="1aea2328-4029-47d6-a214-b579f3d0cbb4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="436" width="128" height="13" uuid="69d8c43e-3be0-436b-b4de-e69a3162b4e5"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Carabina mira aberta especial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="437" width="120" height="13" uuid="f12efa2f-a53a-4f2a-b8f8-a2b38bd9c128"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Duelo 20 segundos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="436" width="303" height="13" uuid="bf76e367-b7e9-40c6-8b4b-97e0adbeceb2"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[32sw, 38SPL, 375mag e 44/40 win]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="450" width="128" height="13" uuid="b14c8699-48a8-4b9c-9c50-8dfe8caff201"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Tiro de Defesa especial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="451" width="120" height="13" uuid="7ed2b6c4-19f1-4009-8214-d74e157c5f0f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Duelo 20 segundos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="258" y="451" width="301" height="13" uuid="075347ab-99a7-4b44-ba9f-23b2d744ff1c"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Espingarda 16, 28, 20,36 ou12 GA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="254" y="344" width="1" height="20" uuid="9b33f97e-ef84-4b94-93c2-9a77552c2c1f"/>
+			</line>
+			<line>
+				<reportElement x="130" y="348" width="1" height="20" uuid="1d99eb06-9272-4115-8da3-1d6bd2ea0ddc"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="259" y="359" width="301" height="13" uuid="bb4ef1ce-e51d-41bd-a1ae-638a1d4a4883"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Mag, 45colt, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="575" width="400" height="18" uuid="03c33c30-e79b-4acd-b35a-b2870f021a54"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAGIB JORGE FERES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="594" width="400" height="18" uuid="198c2445-3b72-4948-ac0d-2a037eca35c7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[Presidente]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight">
+				<reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="171" width="555" height="130" isRemoveLineWhenBlank="true" uuid="77224ea8-3b26-4b0d-8688-9be11f5ed16d">
+					<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font fontName="Arial" size="14" isBold="false"/>
+					<paragraph lineSpacing="1_1_2" lineSpacingSize="10.0" firstLineIndent="0" rightIndent="0" spacingAfter="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["na  Rua   Afonso  Pena,  291 –  Centro, CEP: 65010-030,  São  Luis  -  MA,  mediante  a  solicitação  de"+" "+$F{nome}+","+"  "+"CR nº"+" "+$F{numcr}+","+" "+"está regularmente inscrito "+" "+"nesta Entidade sob o nº"+" "+$F{numclam}+","+" "+"datado desde"+" "+$F{dia}+" "+"de"+" "+$F{mes}+" "+"de"+" "+$F{ano}+" "+"e para fins de comprovação junto ao Exército Brasileiro, que promove ou sedia competições e provas de tiro conforme quadro abaixo:"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM /yyyy hh:mm:ss">
+				<reportElement x="382" y="702" width="142" height="20" uuid="cd05eaa8-268f-4e5c-84ae-0b8107ac2ddd"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="320" y="702" width="61" height="21" uuid="8b2edc97-7902-4e19-ac91-f583a0d1d877"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[emitido em]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

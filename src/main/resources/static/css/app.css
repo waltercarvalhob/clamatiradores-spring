@@ -1,0 +1,26 @@
+body {
+	padding-top: 56px;
+}
+
+#app-body {
+	min-height: calc(100vh - 56px);
+}
+
+.sidebar {
+	width: 240px;
+	min-height: calc(100vh - 56px);
+}
+
+.nav-link.active {
+	font-weight: 600;
+}
+
+.nav-link.disabled {
+	color: var(--bs-secondary-color);
+}
+
+@media (max-width: 991.98px) {
+	.sidebar {
+		display: none;
+	}
+}

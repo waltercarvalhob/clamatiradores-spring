@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/base}"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title th:text="${declaracaoModProvaForm.idDecmodprova} != null ? 'Editar Declaracao' : 'Nova Declaracao'">Declaracao</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+	<h1 class="h3 mb-4" th:text="${declaracaoModProvaForm.idDecmodprova} != null ? 'Editar Declaracao de Modalidade de Prova' : 'Nova Declaracao de Modalidade de Prova'">Declaracao</h1>
+
+	<div class="card mb-3">
+		<div class="card-body py-2">
+			<span class="text-muted small">Socio:</span>
+			<strong th:text="${declaracaoModProvaForm.socioNome}"></strong>
+			<span class="text-muted small ms-2" th:text="'CPF ' + ${declaracaoModProvaForm.socioCpf}"></span>
+		</div>
+	</div>
+
+	<form method="post" th:object="${declaracaoModProvaForm}"
+		  th:action="${declaracaoModProvaForm.idDecmodprova} != null ? @{/declaracoes-modprova/{id}(id=${declaracaoModProvaForm.idDecmodprova})} : @{/declaracoes-modprova}">
+		<input type="hidden" th:field="*{idSocio}">
+
+		<div class="row g-3">
+			<div class="col-md-4">
+				<label class="form-label">Dia</label>
+				<input type="text" class="form-control" th:field="*{dia}">
+			</div>
+			<div class="col-md-4">
+				<label class="form-label">Mes</label>
+				<input type="text" class="form-control" th:field="*{mes}">
+			</div>
+			<div class="col-md-4">
+				<label class="form-label">Ano</label>
+				<input type="text" class="form-control" th:field="*{ano}">
+			</div>
+
+			<div class="col-md-4">
+				<label class="form-label">Data Atual</label>
+				<input type="date" class="form-control" th:field="*{dataatual}">
+			</div>
+			<div class="col-md-4">
+				<label class="form-label">Data de Emissao</label>
+				<input type="date" class="form-control" th:field="*{dataemissao}">
+			</div>
+			<div class="col-md-4">
+				<label class="form-label">Data de Validade</label>
+				<input type="date" class="form-control" th:field="*{datavalidade}">
+			</div>
+		</div>
+
+		<div class="mt-4 d-flex gap-2">
+			<button type="submit" class="btn btn-primary">Salvar</button>
+			<a class="btn btn-outline-secondary" th:href="@{/declaracoes-modprova}">Cancelar</a>
+		</div>
+	</form>
+
+</div>
+</body>
+</html>

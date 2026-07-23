@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title layout:title-pattern="$CONTENT_TITLE - Clam Atiradores">Clam Atiradores</title>
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top px-2 px-lg-3">
+	<button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas" aria-label="Abrir menu">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<a class="navbar-brand ms-2" th:href="@{/socios}">Clam Atiradores</a>
+	<div class="ms-auto d-flex align-items-center text-white">
+		<span class="me-3 small d-none d-sm-inline" sec:authentication="name">usuario</span>
+		<form th:action="@{/logout}" method="post" class="d-inline m-0">
+			<button class="btn btn-sm btn-outline-light" type="submit">Sair</button>
+		</form>
+	</div>
+</nav>
+
+<div class="d-flex" id="app-body">
+
+	<!-- Sidebar fixa (desktop) -->
+	<aside class="d-none d-lg-block bg-body-tertiary border-end sidebar">
+		<div th:replace="~{layout/menu :: navlinks}"></div>
+	</aside>
+
+	<!-- Sidebar em offcanvas (mobile) -->
+	<div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
+		<div class="offcanvas-header">
+			<h5 class="offcanvas-title" id="sidebarOffcanvasLabel">Menu</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+		</div>
+		<div class="offcanvas-body pt-0">
+			<div th:replace="~{layout/menu :: navlinks}"></div>
+		</div>
+	</div>
+
+	<main class="flex-grow-1 p-3 p-lg-4">
+		<div th:if="${mensagem}" class="alert alert-success alert-dismissible fade show" role="alert">
+			<span th:text="${mensagem}"></span>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+		</div>
+
+		<div layout:fragment="content">
+			<!-- conteudo especifico de cada pagina entra aqui -->
+		</div>
+	</main>
+</div>
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<div layout:fragment="scripts"></div>
+</body>
+</html>

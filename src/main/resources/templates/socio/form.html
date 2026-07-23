@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/base}"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title th:text="${socioForm.idSocio} != null ? 'Editar Socio' : 'Novo Socio'">Socio</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+	<h1 class="h3 mb-4" th:text="${socioForm.idSocio} != null ? 'Editar Socio' : 'Novo Socio'">Socio</h1>
+
+	<div class="alert alert-danger" th:if="${erro}" th:text="${erro}"></div>
+
+	<form method="post" th:object="${socioForm}"
+		  th:action="${socioForm.idSocio} != null ? @{/socios/{id}(id=${socioForm.idSocio})} : @{/socios}">
+
+		<div class="row g-3">
+			<div class="col-md-6">
+				<label class="form-label">Nome *</label>
+				<input type="text" class="form-control" th:field="*{nome}"
+					   th:classappend="${#fields.hasErrors('nome')} ? 'is-invalid'">
+				<div class="invalid-feedback" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+			</div>
+			<div class="col-md-6">
+				<label class="form-label">CPF *</label>
+				<input type="text" class="form-control" th:field="*{cpf}"
+					   th:classappend="${#fields.hasErrors('cpf')} ? 'is-invalid'">
+				<div class="invalid-feedback" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></div>
+			</div>
+
+			<div class="col-md-6">
+				<label class="form-label">RG</label>
+				<input type="text" class="form-control" th:field="*{rg}">
+			</div>
+			<div class="col-md-6">
+				<label class="form-label">Email</label>
+				<input type="email" class="form-control" th:field="*{email}"
+					   th:classappend="${#fields.hasErrors('email')} ? 'is-invalid'">
+				<div class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+			</div>
+
+			<div class="col-md-6">
+				<label class="form-label">Telefone</label>
+				<input type="text" class="form-control" th:field="*{fone}">
+			</div>
+			<div class="col-md-6">
+				<label class="form-label">Endereco</label>
+				<input type="text" class="form-control" th:field="*{endereco}">
+			</div>
+
+			<div class="col-md-4">
+				<label class="form-label">Profissao</label>
+				<input type="text" class="form-control" th:field="*{profissao}">
+			</div>
+			<div class="col-md-4">
+				<label class="form-label">Numero CLAM</label>
+				<input type="text" class="form-control" th:field="*{numclam}">
+			</div>
+			<div class="col-md-4">
+				<label class="form-label">Numero CR</label>
+				<input type="text" class="form-control" th:field="*{numcr}">
+			</div>
+
+			<div class="col-md-6">
+				<label class="form-label">Pai</label>
+				<input type="text" class="form-control" th:field="*{pai}">
+			</div>
+			<div class="col-md-6">
+				<label class="form-label">Mae</label>
+				<input type="text" class="form-control" th:field="*{mae}">
+			</div>
+
+			<div class="col-md-4">
+				<label class="form-label">Data de Nascimento</label>
+				<input type="date" class="form-control" th:field="*{datanasc}">
+			</div>
+			<div class="col-md-4">
+				<label class="form-label">Data de Filiacao</label>
+				<input type="date" class="form-control" th:field="*{filiacao}">
+			</div>
+			<div class="col-md-4">
+				<label class="form-label">Data de Validade</label>
+				<input type="date" class="form-control" th:field="*{validade}">
+			</div>
+
+			<div class="col-md-4">
+				<label class="form-label">Renovacao</label>
+				<input type="text" class="form-control" th:field="*{renovacao}">
+			</div>
+			<div class="col-md-4">
+				<label class="form-label">Situacao</label>
+				<select class="form-select" th:field="*{situacao}">
+					<option value="">-</option>
+					<option value="ATIVO">Ativo</option>
+					<option value="INATIVO">Inativo</option>
+				</select>
+			</div>
+			<div class="col-md-4">
+				<label class="form-label">Pagamento</label>
+				<input type="text" class="form-control" th:field="*{pagamento}">
+			</div>
+
+			<div class="col-12">
+				<label class="form-label">Observacao</label>
+				<textarea class="form-control" rows="3" th:field="*{observacao}"></textarea>
+			</div>
+		</div>
+
+		<div class="mt-4 d-flex gap-2">
+			<button type="submit" class="btn btn-primary">Salvar</button>
+			<a class="btn btn-outline-secondary" th:href="@{/socios}">Cancelar</a>
+		</div>
+	</form>
+
+</div>
+</body>
+</html>
