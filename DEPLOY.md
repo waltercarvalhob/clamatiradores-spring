@@ -7,6 +7,34 @@ esta so na sua maquina (ja commitado localmente em `C:/dados/clamAtiradores-spri
 dados ficticios de demonstracao** (`db/demo_schema_seed.sql`), nao com os dados
 reais dos socios. Os dados reais continuam so no seu `bdsocio` local.
 
+## Pipeline automatizado (depois do primeiro deploy)
+
+Depois que voce fizer os passos 1-4 uma vez, o fluxo do dia a dia fica assim,
+sem nenhum clique manual:
+
+```
+git push origin main
+      │
+      ├──► GitHub Actions (.github/workflows/ci.yml)
+      │      compila o projeto e roda os testes contra um Postgres de teste
+      │      (falha aqui = voce fica sabendo antes de ir para producao)
+      │
+      └──► Render (autoDeploy: true no render.yaml)
+             builda a imagem Docker e publica automaticamente
+```
+
+As duas coisas disparam em paralelo a cada `git push` na branch `main` - o
+Render nao espera o resultado do GitHub Actions por padrao. Se quiser que o
+deploy so aconteca depois do CI passar, configure uma **Branch protection rule**
+no GitHub (Settings > Branches > exigir que o check "build-and-test" passe antes
+do merge) e so faca push/merge na `main` depois do PR ficar verde.
+
+O [Dependabot](https://docs.github.com/pt/code-security/dependabot) tambem esta
+configurado (`.github/dependabot.yml`) - toda semana ele abre Pull Requests
+sozinho atualizando dependencias do Maven, as actions do workflow e as imagens
+base do Dockerfile. Cada PR do Dependabot roda o mesmo CI automaticamente antes
+de voce decidir se aprova o merge.
+
 ## 1. Colocar o codigo no GitHub
 
 1. Va em [github.com/new](https://github.com/new) e crie um repositorio novo,
@@ -42,6 +70,9 @@ git push -u origin main
 4. O primeiro deploy demora alguns minutos (o Render precisa construir a imagem
    Docker, que compila o projeto Maven dentro do build). Acompanhe os logs na
    aba **Logs** do servico.
+5. Isso so precisa ser feito uma vez. Dali para frente, `autoDeploy: true` no
+   `render.yaml` significa que todo `git push` na `main` refaz o deploy
+   sozinho - nao precisa voltar no painel do Render de novo.
 
 **Se o Render nao aceitar o `render.yaml`** (formato de Blueprint pode mudar
 com o tempo), crie os recursos manualmente:

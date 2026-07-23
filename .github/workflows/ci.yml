@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: clamatiradores_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DB_HOST: localhost
+      DB_PORT: 5432
+      DB_NAME: clamatiradores_ci
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      ADMIN_SEED_PASSWORD: ci-only-password
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      # Cria o schema (todas as tabelas + alguns dados ficticios) no Postgres do
+      # job, do zero, antes de subir a aplicacao - a mesma base usada para gerar
+      # o banco de demonstracao no Render (ver db/demo_schema_seed.sql).
+      - name: Carregar schema de teste no Postgres
+        run: |
+          PGPASSWORD=postgres psql -h localhost -U postgres -d clamatiradores_ci \
+            -f db/demo_schema_seed.sql
+
+      - name: Build e testes (mvn verify)
+        run: mvn -B clean verify
+
+      - name: Build da imagem Docker (validacao, nao publicada)
+        run: docker build -t clamatiradores-spring:ci .

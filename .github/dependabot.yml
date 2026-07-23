@@ -1,0 +1,20 @@
+version: 2
+updates:
+  # Dependencias Maven (Spring Boot, JasperReports, etc.) - PRs semanais.
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+
+  # Versoes das actions usadas no workflow de CI.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+  # Imagens base do Dockerfile (maven:..., eclipse-temurin:...).
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"

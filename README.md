@@ -25,6 +25,18 @@ Habitualidade acima) so tinha um servlet de atualizacao funcional
 Como o fluxo de criacao ja estava quebrado no sistema original, este modulo
 ficou de fora.
 
+## CI/CD
+
+- `.github/workflows/ci.yml`: a cada push/PR na `main`, builda o projeto e roda
+  os testes (`src/test/java/com/clamatiradores/ClamAtiradoresApplicationTests.java`)
+  contra um Postgres real de teste (inicializado com `db/demo_schema_seed.sql`
+  num container efemero) + valida que a imagem Docker builda.
+- `render.yaml` tem `autoDeploy: true`: todo push na `main` republica sozinho no
+  Render, sem precisar voltar no painel.
+- `.github/dependabot.yml`: Pull Requests semanais automaticos atualizando
+  dependencias do Maven, versoes das GitHub Actions e imagens base do Dockerfile.
+- Ver [DEPLOY.md](DEPLOY.md) para o passo a passo completo de publicacao.
+
 ## Stack
 
 - Java 17, Spring Boot 4.0.7
