@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/base}"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title>Vencimento</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+	<h1 class="h3 mb-1">Vencimento de Socios</h1>
+	<p class="text-muted mb-4">
+		Socios com validade no ano selecionado que ja venceu ou vence nos proximos 10 dias.
+	</p>
+
+	<form class="row g-2 mb-4 align-items-end" method="get" th:action="@{/socios/vencimento}">
+		<div class="col-sm-6 col-md-3">
+			<label class="form-label small mb-1">Ano</label>
+			<select class="form-select" name="ano">
+				<option th:each="a : ${anosDisponiveis}" th:value="${a}" th:text="${a}"
+						th:selected="${a.toString() == ano}"></option>
+			</select>
+		</div>
+		<div class="col-sm-6 col-md-4">
+			<label class="form-label small mb-1">Nome</label>
+			<input type="text" class="form-control" name="nome" th:value="${nome}">
+		</div>
+		<div class="col-md-2 d-flex gap-2">
+			<button type="submit" class="btn btn-outline-primary w-100">Pesquisar</button>
+		</div>
+	</form>
+
+	<div class="d-flex gap-3 mb-3 small">
+		<span><span class="badge" style="background:#FE795C">&nbsp;&nbsp;</span> Ja vencido</span>
+		<span><span class="badge" style="background:#F8A649">&nbsp;&nbsp;</span> Vence nos proximos 10 dias</span>
+	</div>
+
+	<div class="table-responsive">
+		<table class="table table-bordered align-middle">
+			<thead class="table-light">
+				<tr>
+					<th>Nome</th>
+					<th>Fone</th>
+					<th>Validade</th>
+					<th class="text-end">Acoes</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="item : ${itens}"
+					th:style="${item.vencido} ? 'background-color:#FE795C' : 'background-color:#F8A649'">
+					<td th:text="${item.socio.nome}"></td>
+					<td th:text="${item.socio.fone}"></td>
+					<td th:text="${item.socio.validade}"></td>
+					<td class="text-end">
+						<a class="btn btn-sm btn-outline-secondary" th:href="@{/socios/{id}/editar(id=${item.socio.idSocio})}">Atualizar</a>
+					</td>
+				</tr>
+				<tr th:if="${#lists.isEmpty(itens)}">
+					<td colspan="4" class="text-center text-muted py-4">Nenhum socio com vencimento nessas condicoes.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</div>
+</body>
+</html>

@@ -1,5 +1,8 @@
 package com.clamatiradores.socio;
 
+import java.time.Year;
+import java.util.List;
+
 import jakarta.validation.Valid;
 
 import org.springframework.dao.DataIntegrityViolationException;
@@ -8,16 +11,19 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.clamatiradores.socio.dto.SocioForm;
 import com.clamatiradores.socio.dto.SocioSearchCriteria;
+import com.clamatiradores.socio.dto.VencimentoItem;
 
 @Controller
 @RequestMapping("/socios")
@@ -90,6 +96,27 @@ public class SocioController {
 		socioService.delete(id);
 		redirectAttributes.addFlashAttribute("mensagem", "Socio excluido com sucesso.");
 		return "redirect:/socios";
+	}
+
+	/**
+	 * Substitui as paginas VencimentoPorNome2022/2023/2024/2025/2026.jsp e
+	 * VencimentoPorData*.jsp do sistema legado (uma pagina fixa duplicada por ano)
+	 * por uma unica tela parametrizada por ano.
+	 */
+	@GetMapping("/vencimento")
+	public String vencimento(@RequestParam(required = false) String ano, @RequestParam(required = false) String nome,
+			Model model) {
+		int anoAtual = Year.now().getValue();
+		String anoEfetivo = StringUtils.hasText(ano) ? ano : String.valueOf(anoAtual);
+
+		List<Integer> anosDisponiveis = List.of(anoAtual - 2, anoAtual - 1, anoAtual, anoAtual + 1);
+		List<VencimentoItem> itens = socioService.vencimentos(anoEfetivo, nome);
+
+		model.addAttribute("itens", itens);
+		model.addAttribute("ano", anoEfetivo);
+		model.addAttribute("nome", nome);
+		model.addAttribute("anosDisponiveis", anosDisponiveis);
+		return "socio/vencimento";
 	}
 
 }
