@@ -8,6 +8,12 @@ paginada, cadastro, edicao, exclusao e os relatorios PDF correspondentes via
 JasperReports. Autenticacao via Spring Security (o legado nao tinha nenhuma
 funcional).
 
+Tambem inclui a tela `/socios/vencimento` (menu "Vencimento"), que substitui as
+10 paginas fixas por ano do legado (`VencimentoPorNome2022..2026.jsp`,
+`VencimentoPorData2022..2026.jsp`) por uma unica tela com seletor de ano e
+busca por nome, preservando a mesma regra de negocio (validade vencida ou
+vencendo nos proximos 10 dias).
+
 O projeto legado em `C:/dados/clamAtiradores` continua intacto e pode seguir
 rodando normalmente - nada foi apagado ou alterado la.
 
