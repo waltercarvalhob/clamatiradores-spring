@@ -6,4 +6,5 @@ target/
 .factorypath
 *.iml
 .idea/
+.vscode/
 HELP.md
