@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -34,12 +35,13 @@ public class PagamentoController {
 
 	@GetMapping
 	public String list(@RequestParam(required = false) String nome, @RequestParam(required = false) String cpf,
-			@PageableDefault(size = 10) Pageable pageable, Model model) {
+			@PageableDefault(size = 10) Pageable pageable, Model model,
+			@RequestHeader(value = "X-Requested-With", required = false) String requestedWith) {
 		Page<Pagamento> page = pagamentoService.search(nome, cpf, pageable);
 		model.addAttribute("page", page);
 		model.addAttribute("nome", nome);
 		model.addAttribute("cpf", cpf);
-		return "pagamento/list";
+		return "XMLHttpRequest".equals(requestedWith) ? "pagamento/list :: resultados" : "pagamento/list";
 	}
 
 	@GetMapping("/novo")

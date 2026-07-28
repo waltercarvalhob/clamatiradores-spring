@@ -41,6 +41,7 @@ ficou de fora.
 
 - Java 17, Spring Boot 4.0.7
 - Thymeleaf + thymeleaf-layout-dialect (layout unico compartilhado) + Bootstrap 5 (via webjar)
+- API REST em JSON (`com.clamatiradores.api`, ver secao "API REST (JSON)" abaixo) para os mesmos 6 modulos, reaproveitando a mesma camada de servico das telas
 - Spring Data JPA (Hibernate) sobre o PostgreSQL existente (`bdsocio`) - schema **nao** foi migrado, apenas mapeado
 - Spring Security (form login)
 - JasperReports 6.16.0, reaproveitando os `.jrxml` originais de `WebContent/relatorio`, mais
@@ -119,6 +120,62 @@ mvn spring-boot:run
 
 Depois acesse `http://localhost:8080/socios` (redireciona para `/login` se
 nao autenticado).
+
+## Busca ao vivo (sem recarregar a pagina)
+
+As 6 telas de listagem (Socio, Declaracao, Declaracao Modalidade de Prova,
+Declaracao de Habitualidade, Habitualidade, Pagamento) buscam via AJAX com
+debounce (350ms) conforme voce digita no formulario de pesquisa, sem recarregar
+a pagina inteira - `static/js/live-search.js` (vanilla JS, sem dependencia
+nova) faz `fetch()` contra a mesma rota Thymeleaf da tela (ex.: `GET /socios`)
+enviando o header `X-Requested-With: XMLHttpRequest`; o controller do modulo
+detecta esse header e devolve so o fragmento `<div id="resultados" th:fragment="resultados">`
+(tabela + paginacao) em vez da pagina inteira, e o JS troca so esse pedaco do
+DOM. Paginacao e o link "Limpar" tambem passam a ser AJAX (delegacao de evento,
+já que o conteudo e recriado a cada busca).
+
+Progressive enhancement de proposito: a mesma URL com os mesmos query params
+continua funcionando sem JS (link direto, F5, `curl`) - o controller so muda o
+que devolve (fragmento vs. pagina completa) com base no header, a URL e a
+logica de busca/paginacao no `Service` são as mesmas. `history.pushState`
+mantém a URL sincronizada com os filtros atuais, então voltar/recarregar/
+compartilhar o link continuam funcionando.
+
+## API REST (JSON)
+
+Alem das telas Thymeleaf, cada um dos 6 modulos migrados tem um
+`@RestController` equivalente em `com.clamatiradores.api`, expondo o mesmo
+`Service`/`Repository` (mesma regra de negocio, mesmas validacoes) em JSON sob
+`/api/*`:
+
+| Modulo | Endpoints |
+|---|---|
+| Socio | `GET/POST /api/socios`, `GET/PUT/DELETE /api/socios/{id}` (filtros: `nome`, `cpf`, `numcr`, `datanasc`) |
+| Declaracao | `GET/POST /api/declaracoes`, `GET/PUT/DELETE /api/declaracoes/{id}` (filtros: `nome`, `cpf`) |
+| Declaracao Modalidade de Prova | `GET/POST /api/declaracoes-modprova`, `GET/PUT/DELETE /api/declaracoes-modprova/{id}` |
+| Declaracao de Habitualidade | `GET/POST /api/declaracoes-hab`, `GET/PUT/DELETE /api/declaracoes-hab/{id}` |
+| Habitualidade | `GET/POST /api/habitualidades`, `GET/PUT/DELETE /api/habitualidades/{id}` |
+| Pagamento | `GET/POST /api/pagamentos`, `GET/PUT/DELETE /api/pagamentos/{id}` |
+
+Os `GET` de listagem aceitam paginacao padrao do Spring Data (`page`, `size`,
+`sort`) e devolvem um `Page` serializado em JSON. `POST`/`PUT` recebem o mesmo
+DTO `Form` usado pelos formularios HTML (ex.: `SocioForm`), validado com Bean
+Validation - erro 400 com `fieldErrors` por campo. `404` para id inexistente,
+`409` para violacao de integridade (ex.: CPF duplicado).
+
+A API exige a mesma sessao autenticada das telas (login via `/login`), mas fica
+isenta de CSRF (`SecurityConfig`, `csrf().ignoringRequestMatchers("/api/**")`)
+por ser consumida por clientes JSON (curl, Postman, um front separado) que nao
+tem como enviar o token de formulario da sessao do navegador.
+
+Exemplo (apos autenticar e guardar o cookie de sessao):
+
+```bash
+curl -b cookies.txt "http://localhost:8080/api/socios?nome=SILVA&size=5"
+curl -b cookies.txt -X POST http://localhost:8080/api/pagamentos \
+  -H "Content-Type: application/json" \
+  -d '{"idSocio": 123, "pagamento": "Mensalidade 07/2026"}'
+```
 
 ## Estrutura de cada modulo
 

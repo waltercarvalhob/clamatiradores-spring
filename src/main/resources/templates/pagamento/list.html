@@ -12,7 +12,7 @@
 		<a class="btn btn-primary" th:href="@{/socio-picker(target='/pagamentos/novo', targetLabel='Pagamento')}">+ Novo Pagamento</a>
 	</div>
 
-	<form class="row g-2 mb-4 align-items-end" method="get" th:action="@{/pagamentos}">
+	<form class="row g-2 mb-4 align-items-end live-search-form" method="get" th:action="@{/pagamentos}">
 		<div class="col-sm-6 col-md-4">
 			<label class="form-label small mb-1">Nome do Socio</label>
 			<input type="text" class="form-control" name="nome" th:value="${nome}">
@@ -25,6 +25,8 @@
 			<button type="submit" class="btn btn-outline-primary w-100">Pesquisar</button>
 		</div>
 	</form>
+
+	<div id="resultados" th:fragment="resultados">
 
 	<div class="table-responsive">
 		<table class="table table-striped table-hover align-middle">
@@ -80,6 +82,8 @@
 			</li>
 		</ul>
 	</nav>
+
+	</div>
 
 </div>
 </body>

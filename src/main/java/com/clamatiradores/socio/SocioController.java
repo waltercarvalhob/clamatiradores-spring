@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -37,11 +38,12 @@ public class SocioController {
 
 	@GetMapping
 	public String list(@ModelAttribute SocioSearchCriteria criteria,
-			@PageableDefault(size = 10, sort = "nome") Pageable pageable, Model model) {
+			@PageableDefault(size = 10, sort = "nome") Pageable pageable, Model model,
+			@RequestHeader(value = "X-Requested-With", required = false) String requestedWith) {
 		Page<Socio> page = socioService.search(criteria, pageable);
 		model.addAttribute("page", page);
 		model.addAttribute("criteria", criteria);
-		return "socio/list";
+		return "XMLHttpRequest".equals(requestedWith) ? "socio/list :: resultados" : "socio/list";
 	}
 
 	@GetMapping("/novo")

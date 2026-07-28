@@ -29,7 +29,11 @@ public class SecurityConfig {
 				.permitAll())
 			.logout(logout -> logout
 				.logoutSuccessUrl("/login?logout")
-				.permitAll());
+				.permitAll())
+			// /api/** e consumido por clientes JSON (curl, Postman, um front separado) que
+			// nao tem como enviar o token CSRF da sessao do navegador; ainda exige login
+			// (sessao autenticada via /login), so nao exige o token de formulario.
+			.csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"));
 
 		return http.build();
 	}

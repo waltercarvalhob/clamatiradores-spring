@@ -118,6 +118,57 @@ O banco do Render comeca vazio - a aplicacao NAO cria tabelas sozinha
    servico).
 3. Voce vai ver os 3 socios ficticios de demonstracao (`SOCIO EXEMPLO UM/DOIS/TRES`).
 
+## 6. Backup e restore dos dados reais
+
+Os passos acima (secao 4) so cobrem o banco de **demonstracao**. Para levar os
+dados reais dos socios (do `bdsocio` local) para o Render, ou simplesmente
+manter backups periodicos, use os scripts em `db/backup.ps1` e `db/restore.ps1`
+(PowerShell - funcionam tanto contra o banco local quanto contra qualquer
+Postgres remoto, bastando trocar host/usuario/senha). Eles chamam `pg_dump`/
+`pg_restore` do client do PostgreSQL (procuram automaticamente em
+`C:\Program Files\PostgreSQL\*\bin` se nao estiverem no PATH).
+
+### Backup do banco local (`bdsocio`)
+
+```powershell
+.\db\backup.ps1
+```
+
+Gera `db\backups\bdsocio_<timestamp>.dump` (pasta ignorada pelo git - nunca
+commite um backup real, ele contem dados pessoais dos socios).
+
+### Restaurar um backup (local, ou publicar os dados reais no Render)
+
+```powershell
+# No banco local, para testar o backup
+.\db\restore.ps1 -DumpFile .\db\backups\bdsocio_20260728_101500.dump -Force
+
+# No banco do Render (pegue host/usuario/senha na aba "Connect" do banco
+# clamatiradores-db, "External Database URL" tem todos os campos separados)
+.\db\restore.ps1 -DumpFile .\db\backups\bdsocio_20260728_101500.dump `
+    -DbHost dpg-xxxxx.oregon-postgres.render.com -Port 5432 `
+    -DbName clamatiradores -DbUser clamatiradores_user -Password "SENHA_DO_RENDER" -Force
+```
+
+`-Force` e obrigatorio de proposito: o restore roda com `--clean --if-exists`,
+ou seja, **apaga e recria as tabelas do destino** antes de importar os dados
+do backup. Confira sempre o `-DbHost`/`-DbName` antes de rodar com `-Force`
+contra um banco que nao seja o de teste.
+
+### Backup automatico periodico (opcional)
+
+O plano gratuito do Render nao tem backup automatico. Para agendar um backup
+diario do banco de producao (Render) direto da sua maquina, crie uma tarefa no
+**Agendador de Tarefas do Windows** que rode:
+
+```powershell
+powershell -File "C:\dados\clamAtiradores-spring\db\backup.ps1" -DbHost dpg-xxxxx.oregon-postgres.render.com -Port 5432 -DbName clamatiradores -DbUser clamatiradores_user -Password "SENHA_DO_RENDER"
+```
+
+Alternativa sem depender da sua maquina estar ligada: planos pagos do Render
+(Starter em diante) incluem backup diario automatico gerenciado pela propria
+plataforma, com restore de um clique pelo painel.
+
 ## Limitacoes do plano gratuito do Render (vale saber)
 
 - O servico web gratuito **hiberna apos ~15 minutos sem acesso** - o primeiro

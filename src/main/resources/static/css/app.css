@@ -24,3 +24,9 @@ body {
 		display: none;
 	}
 }
+
+.live-search-loading {
+	opacity: 0.5;
+	pointer-events: none;
+	transition: opacity 0.15s ease-in-out;
+}
