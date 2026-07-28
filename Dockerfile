@@ -15,4 +15,8 @@ COPY --from=build /app/target/*.jar app.jar
 # Render injeta a variavel PORT em runtime; application.yml ja le PORT com fallback.
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# TieredStopAtLevel=1 (so JIT C1, pula o C2) + UseSerialGC: reduz bastante o tempo
+# de boot em CPU limitada (ex.: plano gratuito do Render) - troca throughput de
+# regime permanente (que esta app de baixo trafego nao precisa) por startup mais
+# rapido, o que importa pra nao estourar o timeout de deploy.
+ENTRYPOINT ["java", "-XX:TieredStopAtLevel=1", "-XX:+UseSerialGC", "-jar", "app.jar"]

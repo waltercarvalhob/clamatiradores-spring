@@ -6,6 +6,15 @@ spring:
     properties:
       hibernate:
         format_sql: false
+  main:
+    # O plano gratuito do Render tem CPU bem limitada - sem isso, o boot inteiro
+    # (Tomcat so abre a porta depois que TODOS os beans sao criados) demora o
+    # suficiente pra estourar o timeout de deploy do Render. Com lazy-init, o
+    # Tomcat sobe e a porta abre antes dos controllers/beans serem instanciados
+    # (cada um so e criado na primeira requisicao que precisar dele). Beans
+    # CommandLineRunner (AdminUserSeeder) continuam rodando no startup - o Spring
+    # Boot os exclui do lazy-init de proposito, exatamente pra esse caso.
+    lazy-initialization: true
 
 logging:
   level:
