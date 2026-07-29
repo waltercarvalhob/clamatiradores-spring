@@ -45,12 +45,24 @@ if (-not $Force) {
 }
 
 function Find-PgTool([string]$Name) {
+    # Prefere sempre a versao mais nova instalada: hosts gerenciados modernos (ex.: o
+    # Postgres do Render) exigem negociacao SSL direta (sslnegotiation=direct), suportada
+    # so a partir do libpq 17+ - um psql/pg_dump/pg_restore 13 ou 14 falha contra eles com
+    # "FATAL: No SNI information found", mesmo estando no PATH.
+    $roots = @("C:\Program Files\PostgreSQL\*\bin\$Name.exe", "C:\PostgreSQL*\bin\$Name.exe")
+    $candidates = Get-ChildItem $roots -ErrorAction SilentlyContinue |
+        ForEach-Object {
+            $verFolder = Split-Path (Split-Path $_.FullName -Parent) -Leaf
+            [PSCustomObject]@{ Path = $_.FullName; Version = [int]($verFolder -replace '\D', '') }
+        } |
+        Sort-Object Version -Descending
+
+    if ($candidates) { return $candidates[0].Path }
+
     $cmd = Get-Command $Name -ErrorAction SilentlyContinue
     if ($cmd) { return $cmd.Source }
-    $candidates = Get-ChildItem "C:\Program Files\PostgreSQL\*\bin\$Name.exe" -ErrorAction SilentlyContinue |
-        Sort-Object FullName -Descending
-    if ($candidates) { return $candidates[0].FullName }
-    throw "$Name nao encontrado no PATH nem em C:\Program Files\PostgreSQL\*\bin. Instale o cliente do PostgreSQL ou ajuste o PATH."
+
+    throw "$Name nao encontrado em C:\Program Files\PostgreSQL\*\bin, C:\PostgreSQL*\bin nem no PATH. Instale o cliente do PostgreSQL (de preferencia versao 17+, necessaria para hosts como o Render) ou ajuste o PATH."
 }
 
 $pgRestore = Find-PgTool "pg_restore"
