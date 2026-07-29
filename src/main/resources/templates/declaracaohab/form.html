@@ -17,6 +17,7 @@
 		</div>
 	</div>
 
+	<div class="card card-form p-4 p-md-5">
 	<form method="post" th:object="${declaracaohabForm}"
 		  th:action="${declaracaohabForm.idDec} != null ? @{/declaracoes-hab/{id}(id=${declaracaohabForm.idDec})} : @{/declaracoes-hab}">
 		<input type="hidden" th:field="*{idSocio}">
@@ -89,6 +90,7 @@
 			<a class="btn btn-outline-secondary" th:href="@{/declaracoes-hab}">Cancelar</a>
 		</div>
 	</form>
+	</div>
 
 </div>
 </body>

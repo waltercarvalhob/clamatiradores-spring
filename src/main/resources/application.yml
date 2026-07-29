@@ -42,6 +42,10 @@ app:
   admin:
     username: ${ADMIN_SEED_USERNAME:admin}
     password: ${ADMIN_SEED_PASSWORD:changeme}
+  security:
+    # Assina o cookie do "Lembrar-me" (14 dias, padrao do Spring Security). Nao precisa
+    # ser segredo tao critico quanto a senha (so afeta esse cookie), mas troque em producao.
+    remember-me-key: ${REMEMBER_ME_KEY:changeme-remember-me-key}
 
 logging:
   level:

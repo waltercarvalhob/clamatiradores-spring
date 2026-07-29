@@ -1,5 +1,6 @@
 package com.clamatiradores.security;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,7 +19,8 @@ public class SecurityConfig {
 	}
 
 	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+	public SecurityFilterChain filterChain(HttpSecurity http,
+			@Value("${app.security.remember-me-key}") String rememberMeKey) throws Exception {
 		http
 			.authorizeHttpRequests(auth -> auth
 				.requestMatchers("/login", "/css/**", "/js/**", "/webjars/**", "/error").permitAll()
@@ -27,6 +29,9 @@ public class SecurityConfig {
 				.loginPage("/login")
 				.defaultSuccessUrl("/socios", true)
 				.permitAll())
+			.rememberMe(remember -> remember
+				.key(rememberMeKey)
+				.rememberMeParameter("remember-me"))
 			.logout(logout -> logout
 				.logoutSuccessUrl("/login?logout")
 				.permitAll())

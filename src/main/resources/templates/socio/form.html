@@ -11,6 +11,7 @@
 
 	<div class="alert alert-danger" th:if="${erro}" th:text="${erro}"></div>
 
+	<div class="card card-form p-4 p-md-5">
 	<form method="post" th:object="${socioForm}"
 		  th:action="${socioForm.idSocio} != null ? @{/socios/{id}(id=${socioForm.idSocio})} : @{/socios}">
 
@@ -111,6 +112,7 @@
 			<a class="btn btn-outline-secondary" th:href="@{/socios}">Cancelar</a>
 		</div>
 	</form>
+	</div>
 
 </div>
 </body>
