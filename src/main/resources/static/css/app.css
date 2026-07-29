@@ -5,6 +5,13 @@
 	--brand-500: #2a56c6;
 	--brand-400: #3f7cf7;
 	--brand-300: #6d9bff;
+
+	--sidebar-bg: #1c2c49;
+	--sidebar-bg-hover: rgba(255, 255, 255, 0.06);
+	--sidebar-bg-active: rgba(255, 255, 255, 0.1);
+
+	--accent-warm: #ef6a3c;
+	--accent-warm-dark: #d85a2f;
 }
 
 body {
@@ -54,6 +61,23 @@ body {
 .card-form {
 	border-radius: 1.25rem;
 	box-shadow: 0 0.5rem 1.5rem rgba(15, 28, 63, 0.06);
+}
+
+/* Painel que envolve a barra de busca nas telas de listagem */
+.search-panel {
+	border-radius: 1.25rem;
+	box-shadow: 0 0.35rem 1rem rgba(15, 28, 63, 0.05);
+}
+
+.modal-content {
+	border: none;
+	border-radius: 1.25rem;
+	box-shadow: 0 1.5rem 3rem rgba(15, 28, 63, 0.25);
+}
+
+.modal-header,
+.modal-footer {
+	border-color: #eef1f7;
 }
 
 /* ---- Tela de login ---- */
@@ -205,14 +229,82 @@ body {
 .sidebar {
 	width: 240px;
 	min-height: calc(100vh - 56px);
+	background: var(--sidebar-bg);
 }
 
-.nav-link.active {
-	font-weight: 600;
+.sidebar .nav-link,
+.offcanvas-body .nav-link {
+	color: rgba(255, 255, 255, 0.82);
+	padding: 0.85rem 0.75rem;
+	border-radius: 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.sidebar .nav-link.fw-semibold,
+.offcanvas-body .nav-link.fw-semibold {
+	text-transform: uppercase;
+	font-size: 0.8rem;
+	letter-spacing: 0.04em;
+}
+
+.sidebar .nav-link:hover,
+.offcanvas-body .nav-link:hover {
+	background: var(--sidebar-bg-hover);
+	color: #fff;
+}
+
+.sidebar .nav-link.active,
+.offcanvas-body .nav-link.active {
+	background: var(--sidebar-bg-active);
+	color: #fff;
+	border-left: 3px solid var(--brand-400);
+	padding-left: calc(0.75rem - 3px);
+}
+
+.sidebar .text-uppercase.small.text-muted,
+.offcanvas-body .text-uppercase.small.text-muted {
+	color: rgba(255, 255, 255, 0.4) !important;
+	letter-spacing: 0.05em;
+	padding: 0 0.75rem;
 }
 
 .nav-link.disabled {
 	color: var(--bs-secondary-color);
+}
+
+/* Offcanvas (menu mobile) usa a mesma identidade visual da sidebar de desktop */
+.offcanvas {
+	background: var(--sidebar-bg);
+	color: #fff;
+}
+
+.offcanvas-header {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.offcanvas-title {
+	color: #fff;
+}
+
+.offcanvas .btn-close {
+	filter: invert(1) grayscale(100%) brightness(2);
+}
+
+/* Botao hamburguer (mobile) com destaque em cor quente, contrastando com a navbar escura */
+.navbar-toggler {
+	background: var(--accent-warm);
+	border: none;
+	border-radius: 0.6rem;
+	padding: 0.4rem 0.55rem;
+}
+
+.navbar-toggler:hover {
+	background: var(--accent-warm-dark);
+}
+
+.navbar-toggler:focus {
+	box-shadow: 0 0 0 0.2rem rgba(239, 106, 60, 0.35);
 }
 
 @media (max-width: 991.98px) {

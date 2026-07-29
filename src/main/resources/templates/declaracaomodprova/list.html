@@ -12,7 +12,8 @@
 		<a class="btn btn-primary" th:href="@{/socio-picker(target='/declaracoes-modprova/novo', targetLabel='Declaracao de Modalidade de Prova')}">+ Nova Declaracao</a>
 	</div>
 
-	<form class="row g-2 mb-4 align-items-end live-search-form" method="get" th:action="@{/declaracoes-modprova}">
+	<div class="card search-panel p-3 p-md-4 mb-4">
+	<form class="row g-2 align-items-end live-search-form" method="get" th:action="@{/declaracoes-modprova}">
 		<div class="col-sm-6 col-md-4">
 			<label class="form-label small mb-1">Nome do Socio</label>
 			<input type="text" class="form-control" name="nome" th:value="${nome}">
@@ -25,6 +26,7 @@
 			<button type="submit" class="btn btn-outline-primary w-100">Pesquisar</button>
 		</div>
 	</form>
+	</div>
 
 	<div id="resultados" th:fragment="resultados">
 

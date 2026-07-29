@@ -12,7 +12,8 @@
 		Socios com validade no ano selecionado que ja venceu ou vence nos proximos 10 dias.
 	</p>
 
-	<form class="row g-2 mb-4 align-items-end" method="get" th:action="@{/socios/vencimento}">
+	<div class="card search-panel p-3 p-md-4 mb-4">
+	<form class="row g-2 align-items-end" method="get" th:action="@{/socios/vencimento}">
 		<div class="col-sm-6 col-md-3">
 			<label class="form-label small mb-1">Ano</label>
 			<select class="form-select" name="ano">
@@ -28,6 +29,7 @@
 			<button type="submit" class="btn btn-outline-primary w-100">Pesquisar</button>
 		</div>
 	</form>
+	</div>
 
 	<div class="d-flex gap-3 mb-3 small">
 		<span><span class="badge" style="background:#FE795C">&nbsp;&nbsp;</span> Ja vencido</span>

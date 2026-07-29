@@ -12,7 +12,8 @@
 		<a class="btn btn-primary" th:href="@{/socios/novo}">+ Novo Socio</a>
 	</div>
 
-	<form class="row g-2 mb-4 align-items-end live-search-form" method="get" th:action="@{/socios}">
+	<div class="card search-panel p-3 p-md-4 mb-4">
+	<form class="row g-2 align-items-end live-search-form" method="get" th:action="@{/socios}">
 		<div class="col-sm-6 col-md-3">
 			<label class="form-label small mb-1">Nome</label>
 			<input type="text" class="form-control" name="nome" th:value="${criteria.nome}">
@@ -34,6 +35,7 @@
 			<a class="btn btn-outline-secondary w-100 live-search-clear" th:href="@{/socios}">Limpar</a>
 		</div>
 	</form>
+	</div>
 
 	<div id="resultados" th:fragment="resultados">
 
