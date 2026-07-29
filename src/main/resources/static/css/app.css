@@ -313,25 +313,32 @@ body {
 	}
 }
 
-/* Destaque de vencimento na tela Vencimento de Socios */
+/* Destaque de vencimento na tela Vencimento de Socios. Usadas tanto nas
+   linhas da tabela quanto no badge da legenda, por isso definem tanto as
+   variaveis do Bootstrap (consumidas pelas celulas <td>/<th> da tabela,
+   que pintam o proprio fundo via --bs-table-bg - um background-color
+   comum no <tr> ficaria escondido atras delas) quanto um background-color
+   comum (para o badge da legenda, que nao esta dentro de uma .table). */
 .venc-vencido {
+	--bs-table-bg: #dc2626;
+	--bs-table-color: #fff;
 	background-color: #dc2626;
 	color: #fff;
 }
 
 .venc-vencido:hover {
-	background-color: #c0202b;
-	color: #fff;
+	--bs-table-bg: #c0202b;
 }
 
 .venc-proximo {
+	--bs-table-bg: #fbdada;
+	--bs-table-color: #7f1d1d;
 	background-color: #fbdada;
 	color: #7f1d1d;
 }
 
 .venc-proximo:hover {
-	background-color: #f7c9c9;
-	color: #7f1d1d;
+	--bs-table-bg: #f7c9c9;
 }
 
 .live-search-loading {
