@@ -80,10 +80,17 @@
 	</div>
 
 	<nav th:if="${page.totalPages > 1}" aria-label="Paginacao">
-		<ul class="pagination flex-wrap">
-			<li class="page-item" th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}"
-				th:classappend="${i == page.number} ? 'active'">
-				<a class="page-link" th:href="@{/declaracoes-modprova(page=${i}, size=${page.size}, nome=${nome}, cpf=${cpf})}" th:text="${i + 1}"></a>
+		<ul class="pagination flex-wrap" th:with="pages=${T(com.clamatiradores.common.web.Pagination).window(page.number, page.totalPages)}">
+			<li class="page-item" th:classappend="${page.first} ? 'disabled'">
+				<a class="page-link" th:href="@{/declaracoes-modprova(page=${page.number - 1}, size=${page.size}, nome=${nome}, cpf=${cpf})}">&laquo;</a>
+			</li>
+			<li class="page-item" th:each="p : ${pages}"
+				th:classappend="${p == page.number} ? 'active' : (${p == -1} ? 'disabled')">
+				<span th:if="${p == -1}" class="page-link">&hellip;</span>
+				<a th:unless="${p == -1}" class="page-link" th:href="@{/declaracoes-modprova(page=${p}, size=${page.size}, nome=${nome}, cpf=${cpf})}" th:text="${p + 1}"></a>
+			</li>
+			<li class="page-item" th:classappend="${page.last} ? 'disabled'">
+				<a class="page-link" th:href="@{/declaracoes-modprova(page=${page.number + 1}, size=${page.size}, nome=${nome}, cpf=${cpf})}">&raquo;</a>
 			</li>
 		</ul>
 	</nav>

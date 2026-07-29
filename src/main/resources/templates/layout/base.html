@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title layout:title-pattern="$CONTENT_TITLE - Clam Atiradores">Clam Atiradores</title>
-	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
 	<link rel="stylesheet" th:href="@{/css/app.css}">
 </head>
 <body>
@@ -27,7 +27,7 @@
 <div class="d-flex" id="app-body">
 
 	<!-- Sidebar fixa (desktop) -->
-	<aside class="d-none d-lg-block bg-body-tertiary border-end sidebar">
+	<aside class="d-none d-lg-block sidebar">
 		<div th:replace="~{layout/menu :: navlinks}"></div>
 	</aside>
 
@@ -54,7 +54,7 @@
 	</main>
 </div>
 
-<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
 <script th:src="@{/js/live-search.js}"></script>
 <div layout:fragment="scripts"></div>
 </body>
