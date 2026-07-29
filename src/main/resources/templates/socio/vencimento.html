@@ -32,8 +32,8 @@
 	</div>
 
 	<div class="d-flex gap-3 mb-3 small">
-		<span><span class="badge" style="background:#FE795C">&nbsp;&nbsp;</span> Ja vencido</span>
-		<span><span class="badge" style="background:#F8A649">&nbsp;&nbsp;</span> Vence nos proximos 10 dias</span>
+		<span><span class="badge venc-vencido">&nbsp;&nbsp;</span> Ja vencido</span>
+		<span><span class="badge venc-proximo">&nbsp;&nbsp;</span> Vence nos proximos 10 dias</span>
 	</div>
 
 	<div class="table-responsive">
@@ -47,8 +47,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="item : ${itens}"
-					th:style="${item.vencido} ? 'background-color:#FE795C' : 'background-color:#F8A649'">
+				<tr th:each="item : ${itens.content}"
+					th:classappend="${item.vencido} ? 'venc-vencido' : 'venc-proximo'">
 					<td th:text="${item.socio.nome}"></td>
 					<td th:text="${item.socio.fone}"></td>
 					<td th:text="${item.socio.validade}"></td>
@@ -56,12 +56,28 @@
 						<a class="btn btn-sm btn-outline-secondary" th:href="@{/socios/{id}/editar(id=${item.socio.idSocio})}">Atualizar</a>
 					</td>
 				</tr>
-				<tr th:if="${#lists.isEmpty(itens)}">
+				<tr th:if="${itens.empty}">
 					<td colspan="4" class="text-center text-muted py-4">Nenhum socio com vencimento nessas condicoes.</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
+
+	<nav th:if="${itens.totalPages > 1}" aria-label="Paginacao">
+		<ul class="pagination flex-wrap" th:with="pages=${T(com.clamatiradores.common.web.Pagination).window(itens.number, itens.totalPages)}">
+			<li class="page-item" th:classappend="${itens.first} ? 'disabled'">
+				<a class="page-link" th:href="@{/socios/vencimento(page=${itens.number - 1}, size=${itens.size}, ano=${ano}, nome=${nome})}">&laquo;</a>
+			</li>
+			<li class="page-item" th:each="p : ${pages}"
+				th:classappend="${p == itens.number} ? 'active' : (${p == -1} ? 'disabled')">
+				<span th:if="${p == -1}" class="page-link">&hellip;</span>
+				<a th:unless="${p == -1}" class="page-link" th:href="@{/socios/vencimento(page=${p}, size=${itens.size}, ano=${ano}, nome=${nome})}" th:text="${p + 1}"></a>
+			</li>
+			<li class="page-item" th:classappend="${itens.last} ? 'disabled'">
+				<a class="page-link" th:href="@{/socios/vencimento(page=${itens.number + 1}, size=${itens.size}, ano=${ano}, nome=${nome})}">&raquo;</a>
+			</li>
+		</ul>
+	</nav>
 
 </div>
 </body>

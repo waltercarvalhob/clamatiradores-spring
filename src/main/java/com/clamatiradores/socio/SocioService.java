@@ -1,7 +1,5 @@
 package com.clamatiradores.socio;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -21,6 +19,6 @@ public interface SocioService {
 
 	void delete(Integer id);
 
-	List<VencimentoItem> vencimentos(String ano, String nome);
+	Page<VencimentoItem> vencimentos(String ano, String nome, Pageable pageable);
 
 }

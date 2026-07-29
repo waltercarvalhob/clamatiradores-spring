@@ -1,7 +1,7 @@
 package com.clamatiradores.socio;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -22,7 +22,12 @@ public interface SocioRepository extends JpaRepository<Socio, Integer>, JpaSpeci
 			+ "AND CHAR_LENGTH(validade) = 10 "
 			+ "AND TO_DATE(validade, 'DD/MM/YYYY') < now() + INTERVAL '10 days' "
 			+ "AND (:nome IS NULL OR nome ILIKE CONCAT('%', :nome, '%')) "
-			+ "ORDER BY TO_DATE(validade, 'DD/MM/YYYY') ASC", nativeQuery = true)
-	List<Socio> findVencimentos(@Param("ano") String ano, @Param("nome") String nome);
+			+ "ORDER BY TO_DATE(validade, 'DD/MM/YYYY') ASC",
+			countQuery = "SELECT count(*) FROM socio WHERE validade LIKE CONCAT('%/', :ano) "
+					+ "AND CHAR_LENGTH(validade) = 10 "
+					+ "AND TO_DATE(validade, 'DD/MM/YYYY') < now() + INTERVAL '10 days' "
+					+ "AND (:nome IS NULL OR nome ILIKE CONCAT('%', :nome, '%'))",
+			nativeQuery = true)
+	Page<Socio> findVencimentos(@Param("ano") String ano, @Param("nome") String nome, Pageable pageable);
 
 }

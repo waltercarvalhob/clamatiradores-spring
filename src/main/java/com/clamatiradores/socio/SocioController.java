@@ -107,12 +107,12 @@ public class SocioController {
 	 */
 	@GetMapping("/vencimento")
 	public String vencimento(@RequestParam(required = false) String ano, @RequestParam(required = false) String nome,
-			Model model) {
+			@PageableDefault(size = 10) Pageable pageable, Model model) {
 		int anoAtual = Year.now().getValue();
 		String anoEfetivo = StringUtils.hasText(ano) ? ano : String.valueOf(anoAtual);
 
 		List<Integer> anosDisponiveis = List.of(anoAtual - 2, anoAtual - 1, anoAtual, anoAtual + 1);
-		List<VencimentoItem> itens = socioService.vencimentos(anoEfetivo, nome);
+		Page<VencimentoItem> itens = socioService.vencimentos(anoEfetivo, nome, pageable);
 
 		model.addAttribute("itens", itens);
 		model.addAttribute("ano", anoEfetivo);

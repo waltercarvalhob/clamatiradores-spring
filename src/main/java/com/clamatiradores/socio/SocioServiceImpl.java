@@ -2,8 +2,6 @@ package com.clamatiradores.socio;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -63,12 +61,11 @@ public class SocioServiceImpl implements SocioService {
 	}
 
 	@Override
-	public List<VencimentoItem> vencimentos(String ano, String nome) {
+	public Page<VencimentoItem> vencimentos(String ano, String nome, Pageable pageable) {
 		String nomeFiltro = StringUtils.hasText(nome) ? nome.trim() : null;
 		LocalDate hoje = LocalDate.now();
-		return socioRepository.findVencimentos(ano, nomeFiltro).stream()
-				.map(socio -> new VencimentoItem(socio, isVencido(socio, hoje)))
-				.collect(Collectors.toList());
+		return socioRepository.findVencimentos(ano, nomeFiltro, pageable)
+				.map(socio -> new VencimentoItem(socio, isVencido(socio, hoje)));
 	}
 
 	private boolean isVencido(Socio socio, LocalDate hoje) {
