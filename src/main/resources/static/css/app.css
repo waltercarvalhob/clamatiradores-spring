@@ -273,8 +273,11 @@ body {
 	color: var(--bs-secondary-color);
 }
 
-/* Offcanvas (menu mobile) usa a mesma identidade visual da sidebar de desktop */
+/* Offcanvas (menu mobile) usa a mesma identidade visual da sidebar de desktop.
+   O padrao do Bootstrap e --bs-offcanvas-width: 400px fixo, mais largo que a
+   maioria dos celulares (360-390px) - o menu ficava cortado na lateral. */
 .offcanvas {
+	--bs-offcanvas-width: min(320px, 85vw);
 	background: var(--sidebar-bg);
 	color: #fff;
 }
