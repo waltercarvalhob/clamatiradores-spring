@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
 
 <nav th:fragment="navlinks" class="nav flex-column px-3 py-3">
@@ -15,6 +15,9 @@
 	<a class="nav-link" th:href="@{/socios/relatorios/ativo}" target="_blank" rel="noopener">Socios Ativos (PDF)</a>
 	<a class="nav-link" th:href="@{/socios/relatorios/inativo}" target="_blank" rel="noopener">Socios Inativos (PDF)</a>
 	<a class="nav-link" th:href="@{/socios/relatorios/clam}" target="_blank" rel="noopener">Relatorio Geral (PDF)</a>
+
+	<div class="mt-3 mb-1 text-uppercase small text-muted" sec:authorize="hasRole('ADMIN')">Administracao</div>
+	<a class="nav-link fw-semibold" th:href="@{/usuarios}" sec:authorize="hasRole('ADMIN')">Usuarios</a>
 </nav>
 
 </body>
