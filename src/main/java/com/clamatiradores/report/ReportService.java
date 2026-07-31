@@ -8,6 +8,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +31,8 @@ import net.sf.jasperreports.engine.JasperReport;
 @Service
 public class ReportService {
 
+	private static final Logger log = LoggerFactory.getLogger(ReportService.class);
+
 	private final DataSource dataSource;
 	private final Map<String, JasperReport> compiledReports = new ConcurrentHashMap<>();
 
@@ -41,7 +45,8 @@ public class ReportService {
 		try (Connection connection = dataSource.getConnection()) {
 			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, connection);
 			return JasperExportManager.exportReportToPdf(jasperPrint);
-		} catch (JRException | SQLException e) {
+		} catch (JRException | SQLException | RuntimeException e) {
+			log.error("Falha ao gerar o relatorio '{}'", reportName, e);
 			throw new ReportGenerationException(reportName, e);
 		}
 	}
@@ -50,6 +55,7 @@ public class ReportService {
 		try (InputStream in = new ClassPathResource("relatorio/" + reportName + ".jrxml").getInputStream()) {
 			return JasperCompileManager.compileReport(in);
 		} catch (Exception e) {
+			log.error("Falha ao compilar o relatorio '{}'", reportName, e);
 			throw new ReportGenerationException(reportName, e);
 		}
 	}
