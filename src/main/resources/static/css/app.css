@@ -83,6 +83,11 @@ body {
 /* ---- Tela de login (preto/vermelho, no estilo do mockup do clube) ---- */
 .auth-shell {
 	min-height: 100vh;
+	/* 100vh recalcula toda vez que a barra de endereco do celular aparece/some,
+	   fazendo a tela inteira "pular" pra cima e pra baixo ao rolar. 100svh usa
+	   a menor altura de viewport possivel (barra sempre expandida) - um valor
+	   fixo que nao muda, entao a tela para de pular. */
+	min-height: 100svh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -204,8 +209,11 @@ body {
 }
 
 .auth-logo {
-	position: absolute;
-	z-index: 1;
+	/* fixed (nao absolute) - fica preso no canto da tela, visivel o tempo todo,
+	   em vez de preso ao fim do conteudo (que poderia empurra-lo pra fora da
+	   area visivel se a tela precisar rolar). */
+	position: fixed;
+	z-index: 2;
 	right: 1.5rem;
 	bottom: 1.5rem;
 	width: 4.5rem;
