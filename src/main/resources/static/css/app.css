@@ -81,19 +81,24 @@ body {
 }
 
 /* ---- Tela de login (preto/vermelho, no estilo do mockup do clube) ---- */
+/* Body da tela de login: sem o padding-top de 56px reservado pra navbar (essa
+   pagina nao tem navbar), altura travada no tamanho da tela - conteudo nao
+   pode ultrapassar isso, entao a pagina nunca rola, so encolhe o espacamento. */
+.auth-body {
+	height: 100svh;
+	overflow: hidden;
+	padding-top: 0;
+	margin: 0;
+}
+
 .auth-shell {
-	min-height: 100vh;
-	/* 100vh recalcula toda vez que a barra de endereco do celular aparece/some,
-	   fazendo a tela inteira "pular" pra cima e pra baixo ao rolar. 100svh usa
-	   a menor altura de viewport possivel (barra sempre expandida) - um valor
-	   fixo que nao muda, entao a tela para de pular. */
-	min-height: 100svh;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: 2.5rem;
-	padding: 3rem 1.5rem 6rem;
+	gap: clamp(1rem, 3.5vh, 2.5rem);
+	padding: clamp(1rem, 4vh, 3rem) 1.5rem;
 	position: relative;
 	overflow: hidden;
 	background:
@@ -110,7 +115,7 @@ body {
 	text-transform: uppercase;
 	letter-spacing: 0.09em;
 	text-align: center;
-	font-size: clamp(1.4rem, 4vw, 2.15rem);
+	font-size: clamp(1.1rem, min(4vw, 4.5vh), 2.15rem);
 	line-height: 1.3;
 	max-width: 32rem;
 	text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7);
@@ -121,21 +126,23 @@ body {
 	z-index: 1;
 	width: 100%;
 	max-width: 360px;
+	max-height: 100%;
+	overflow-y: auto;
 	background: #fff;
 	border-radius: 1.5rem;
-	padding: 2.25rem 2rem;
+	padding: clamp(1.25rem, 4vh, 2.25rem) 2rem;
 	box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.55);
 }
 
 .auth-card-title {
 	color: #c41e1e;
 	font-weight: 800;
-	font-size: 1.75rem;
-	margin-bottom: 1.5rem;
+	font-size: clamp(1.35rem, 5vh, 1.75rem);
+	margin-bottom: clamp(0.75rem, 3vh, 1.5rem);
 }
 
 .auth-field {
-	margin-bottom: 1.1rem;
+	margin-bottom: clamp(0.65rem, 2.5vh, 1.1rem);
 }
 
 .auth-field label {
@@ -172,7 +179,7 @@ body {
 	gap: 0.5rem;
 	color: #4a4a4a;
 	font-size: 0.85rem;
-	margin-bottom: 1.5rem;
+	margin-bottom: clamp(0.75rem, 3vh, 1.5rem);
 }
 
 .auth-check input {
@@ -224,10 +231,6 @@ body {
 }
 
 @media (max-width: 480px) {
-	.auth-shell {
-		padding-bottom: 5rem;
-	}
-
 	.auth-logo {
 		width: 3.25rem;
 		height: 3.25rem;
