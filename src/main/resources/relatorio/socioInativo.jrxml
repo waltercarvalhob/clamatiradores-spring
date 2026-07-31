@@ -4,15 +4,9 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="conClamAtual"/>
 	<queryString language="SQL">
-		<![CDATA[SELECT aux.nome, aux.endereco, aux.cpf, aux.numcr, aux.validade,aux.situacao
-FROM
-	(SELECT
-		nome, endereco, cpf, numcr, validade, situacao
-		FROM socio
-		WHERE validade ~ '^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}$'
-		AND safe_to_date(validade, 'DD/MM/YYYY') IS NOT NULL
-		) as aux
-WHERE safe_to_date(aux.validade, 'DD/MM/YYYY') <= TO_DATE('30/10/2023','DD/MM/YYYY');]]>
+		<![CDATA[SELECT nome, endereco, cpf, numcr, validade, situacao
+FROM socio
+WHERE UPPER(situacao) = 'INATIVO';]]>
 	</queryString>
 	<field name="nome" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="nome"/>
@@ -247,7 +241,7 @@ WHERE safe_to_date(aux.validade, 'DD/MM/YYYY') <= TO_DATE('30/10/2023','DD/MM/YY
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{situacao}.toLowerCase()]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
