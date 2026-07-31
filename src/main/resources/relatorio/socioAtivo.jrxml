@@ -10,8 +10,9 @@ FROM
 		nome, endereco, cpf, numcr, validade, situacao
 		FROM socio
 		WHERE validade ~ '^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}$'
+		AND safe_to_date(validade, 'DD/MM/YYYY') IS NOT NULL
 		) as aux
-WHERE TO_DATE(aux.validade, 'DD/MM/YYYY') >= TO_DATE('01/12/2023','DD/MM/YYYY');]]>
+WHERE safe_to_date(aux.validade, 'DD/MM/YYYY') >= TO_DATE('01/12/2023','DD/MM/YYYY');]]>
 	</queryString>
 	<field name="nome" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="nome"/>
