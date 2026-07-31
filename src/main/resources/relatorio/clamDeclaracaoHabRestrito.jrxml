@@ -658,14 +658,14 @@ from tbfrequencia
 			<staticText>
 				<reportElement x="2" y="28" width="550" height="14" uuid="759322a3-835d-4b69-a97a-dda8fde7ded4"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="10" isBold="true" isUnderline="false"/>
+					<font fontName="Liberation Sans" size="10" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Dados da Entidade de Tiro Declarante]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="2" y="-12" width="552" height="32" uuid="49eb9fea-f13e-4353-9441-2a91a372595f"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="10" isBold="true" isUnderline="false"/>
+					<font fontName="Liberation Sans" size="10" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[COMPROVAÇÃO DE PARTICIPAÇÕES EM TREINAMENTOS E/OU COMPETIÇÕES DE TIRO (HABITUALIDADE)
 (art. 35 do Decreto nº 11.615/2023)]]></text>
@@ -848,7 +848,7 @@ from tbfrequencia
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="10" isBold="true" isUnderline="false"/>
+					<font fontName="Liberation Sans" size="10" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Dados da Habitualidade]]></text>
 			</staticText>
@@ -863,7 +863,7 @@ from tbfrequencia
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<text><![CDATA[Calibre de uso  restrito]]></text>
 			</staticText>
@@ -877,7 +877,7 @@ from tbfrequencia
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<text><![CDATA[Tipo de Evento]]></text>
 			</staticText>
@@ -1766,14 +1766,14 @@ Regional, Nacional ou Internacional)]]></text>
 			<staticText>
 				<reportElement x="2" y="565" width="278" height="18" uuid="501d030b-5235-4cda-b308-260883097c96"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<text><![CDATA[Presidente]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="2" y="551" width="278" height="18" uuid="69be4557-f2e4-4607-a5bf-220746de341d"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="Liberation Sans" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[NAGIB JORGE FERES]]></text>
 			</staticText>
@@ -1783,21 +1783,21 @@ Regional, Nacional ou Internacional)]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="281" y="564" width="271" height="18" uuid="98047508-9089-49d2-8b1f-30fa0e29df24"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<text><![CDATA[Requerente]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="2" y="589" width="100" height="88" uuid="f3128d6f-31bb-43d9-9f12-17a450a24d84"/>
 				<textElement textAlignment="Right">
-					<font fontName="Arial"/>
+					<font fontName="Liberation Sans"/>
 				</textElement>
 				<text><![CDATA[Este QRCode pode
 ser lido por
@@ -1816,28 +1816,28 @@ página de validação]]></text>
 			<textField pattern="dd/MM /yyyy hh:mm:ss">
 				<reportElement x="390" y="656" width="142" height="20" uuid="54feee34-c008-4673-8a66-f33511021541"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="327" y="656" width="61" height="21" uuid="2544a2d7-960b-425c-9c00-86b249d0ab92"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<text><![CDATA[emitido em]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="319" y="608" width="200" height="20" uuid="bbc647e8-7096-4ed4-8cf9-e5e56233549b"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="Liberation Sans" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Código de Autenticação]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="320" y="628" width="199" height="16" uuid="e2771168-c719-4272-9c7f-3f9b69a26e4f"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="Liberation Sans" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{code_identificacao}]]></textFieldExpression>
 			</textField>
@@ -2104,14 +2104,14 @@ página de validação]]></text>
 			<staticText>
 				<reportElement x="3" y="0" width="550" height="14" uuid="5ac08d94-9bb7-4b15-9be7-ce2994b2f4f5"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="10" isBold="true" isUnderline="false"/>
+					<font fontName="Liberation Sans" size="10" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Dados do Atirador Desportivo]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="3" y="494" width="548" height="21" uuid="54de254d-c54b-45ed-a103-abd5116c2cef"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="8"/>
+					<font fontName="Liberation Sans" size="8"/>
 				</textElement>
 				<text><![CDATA[Observação: (1) Número da Arma no Sistema de Gerenciamento Militar de Armas (SIGMA). (2) Quantidade de munições utilizadas na atividade.  (3) A temporalidade dos Registros de Habitualidade é permanente.  (4)Na eventualidade de a Entidade de Tiro adotar o Registro Eletrônico.]]></text>
 			</staticText>

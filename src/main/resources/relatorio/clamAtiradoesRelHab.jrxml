@@ -90,7 +90,7 @@ where mes like $P{mes} and ano like $P{ano}  order by nome]]>
 			<staticText>
 				<reportElement x="-20" y="37" width="841" height="30" uuid="d942c8cc-b9eb-4e63-b5d0-e3ff5365b929"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial Black" size="14"/>
+					<font fontName="Liberation Sans" isBold="true" size="14"/>
 				</textElement>
 				<text><![CDATA[CLAM - CLUBE DE ATIRADORES DO MARANHÃO 
 ]]></text>
@@ -98,7 +98,7 @@ where mes like $P{mes} and ano like $P{ano}  order by nome]]>
 			<staticText>
 				<reportElement x="-20" y="57" width="841" height="30" uuid="b6a07153-76a2-47f7-8208-7f2c4bcad4f3"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial Black" size="14"/>
+					<font fontName="Liberation Sans" isBold="true" size="14"/>
 				</textElement>
 				<text><![CDATA[REGISTRO Nº 1363/MA – SFPC/8ª RM 
 ]]></text>
@@ -106,7 +106,7 @@ where mes like $P{mes} and ano like $P{ano}  order by nome]]>
 			<staticText>
 				<reportElement x="-20" y="106" width="841" height="30" uuid="ca0f4593-8109-4db9-a1d1-370b94aacca9"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial Black" size="14"/>
+					<font fontName="Liberation Sans" isBold="true" size="14"/>
 				</textElement>
 				<text><![CDATA[MAPA RESUMO CONTROLE ATIVIDADES]]></text>
 			</staticText>
@@ -200,14 +200,14 @@ where mes like $P{mes} and ano like $P{ano}  order by nome]]>
 			<staticText>
 				<reportElement x="-17" y="83" width="841" height="23" uuid="1d51f25c-4ccf-4742-bdfa-426c19993a5e"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial Black" size="14"/>
+					<font fontName="Liberation Sans" isBold="true" size="14"/>
 				</textElement>
 				<text><![CDATA[SÃO LUIS – MA ]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="330" y="155" width="91" height="20" uuid="f0938cd0-1ca0-40bc-abf0-02c5a6d187f1"/>
 				<textElement textAlignment="Right">
-					<font fontName="Arial Black" size="14"/>
+					<font fontName="Liberation Sans" isBold="true" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{mes}]]></textFieldExpression>
 			</textField>
@@ -219,7 +219,7 @@ where mes like $P{mes} and ano like $P{ano}  order by nome]]>
 			<textField>
 				<reportElement x="425" y="155" width="84" height="20" uuid="37a6e167-ce20-4d6c-aa4e-66a9abd66ba5"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial Black" size="14"/>
+					<font fontName="Liberation Sans" isBold="true" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ano}]]></textFieldExpression>
 			</textField>
@@ -321,14 +321,14 @@ where mes like $P{mes} and ano like $P{ano}  order by nome]]>
 			<textField pattern="&apos;São Luis,&apos;  dd  &apos;de&apos;  MMMM  &apos;de&apos;  yyyy">
 				<reportElement x="180" y="156" width="400" height="21" uuid="59b0d386-e165-4263-bf43-d4623e09c69f"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="14"/>
+					<font fontName="Liberation Sans" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="-20" y="55" width="841" height="30" uuid="adbfe9a3-3db4-442d-888c-bc53f7029fe5"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial Black" size="14"/>
+					<font fontName="Liberation Sans" isBold="true" size="14"/>
 				</textElement>
 				<text><![CDATA[CLAM - CLUBE DE ATIRADORES DO MARANHÃO 
 ]]></text>
@@ -348,7 +348,7 @@ where mes like $P{mes} and ano like $P{ano}  order by nome]]>
 			<staticText>
 				<reportElement x="180" y="100" width="201" height="20" uuid="45e763ef-6816-4ffa-b334-0801d3caf1f6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="Liberation Sans" size="14"/>
 				</textElement>
 				<text><![CDATA[FILIADOS]]></text>
 			</staticText>
@@ -359,7 +359,7 @@ where mes like $P{mes} and ano like $P{ano}  order by nome]]>
 			<textField>
 				<reportElement x="440" y="98" width="100" height="23" uuid="2c732bbb-690e-4de1-952f-fb81a8796a87"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="Liberation Sans" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{qtd}]]></textFieldExpression>
 			</textField>

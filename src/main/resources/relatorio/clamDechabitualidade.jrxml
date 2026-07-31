@@ -413,7 +413,7 @@ where nome  like $P{nome} and id_dec = $P{id_dec}]]>
 			<staticText>
 				<reportElement x="0" y="27" width="554" height="18" uuid="fc2434e4-2e85-4e72-a15e-22b0b8016941"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="Liberation Sans" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CLAM - CLUBE DE ATIRADORES DO MARANHÃO]]></text>
 			</staticText>
@@ -424,7 +424,7 @@ where nome  like $P{nome} and id_dec = $P{id_dec}]]>
 			<textField textAdjust="ScaleFont">
 				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="1" y="95" width="554" height="53" uuid="7193008c-797a-4931-a2bf-fea36fb3ded1"/>
 				<textElement textAlignment="Justified" verticalAlignment="Top">
-					<font fontName="Arial" size="12" isBold="false"/>
+					<font fontName="Liberation Sans" size="12" isBold="false"/>
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
 				<textFieldExpression><![CDATA["tiro  desportivo  junto  ao  Exército Brasileiro que " + ""+$F{nome}+","+" "+"CR nº"+" "+$F{numcr}+","+" "+" estar regularmente"+" "+"inscrito nesta Entidade sob o nº"+" "+$F{numclam}+","+" "+" datado desde"+" "+$F{dia}+" "+"de"+" "+$F{mes}+" "+"de"+" "+$F{ano}+"."]]></textFieldExpression>
@@ -432,21 +432,21 @@ where nome  like $P{nome} and id_dec = $P{id_dec}]]>
 			<staticText>
 				<reportElement x="1" y="540" width="261" height="18" uuid="03aae553-062b-40ab-9605-fc27eeee8783"/>
 				<textElement>
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<text><![CDATA[Esta declaração tem validade de 90 dias.]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="338" y="562" width="198" height="24" uuid="048cf825-c809-470a-bc5c-808fa4364c7e"/>
 				<textElement>
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{datainsc}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="268" y="562" width="66" height="24" uuid="1abb228b-a38f-452a-a4cc-ecb12053dd1b"/>
 				<textElement>
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<text><![CDATA[São Luís,]]></text>
 			</staticText>
@@ -462,21 +462,21 @@ where nome  like $P{nome} and id_dec = $P{id_dec}]]>
 			<staticText>
 				<reportElement x="-1" y="177" width="163" height="21" uuid="305c9e29-7828-4971-a4f9-d6801f8f9b5a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<text><![CDATA[LOCAL]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="164" y="178" width="151" height="21" uuid="ca47c280-9bff-4bac-9f9d-d0d04c6a8f06"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<text><![CDATA[DATA]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="320" y="178" width="230" height="21" uuid="0402dd9a-22ab-4325-995f-5d91faead02b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<text><![CDATA[EVENTO (TREINO/COMPETIÇÃO)]]></text>
 			</staticText>
@@ -577,7 +577,7 @@ where nome  like $P{nome} and id_dec = $P{id_dec}]]>
 			<staticText>
 				<reportElement x="1" y="511" width="554" height="30" uuid="f2d9a5a6-baf7-4ff9-87a6-e8866d07eef4"/>
 				<textElement textAlignment="Justified">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<text><![CDATA[Os registros que comprovam as informações acima do referido atirador desportivo estão disponíveis,a qualquer momento, paraafiscalização de produtos controlados.]]></text>
 			</staticText>
@@ -713,14 +713,14 @@ where nome  like $P{nome} and id_dec = $P{id_dec}]]>
 			<textField>
 				<reportElement x="323" y="710" width="199" height="16" uuid="de26d739-c3ae-4a9b-8e07-af73f4e62adf"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="Liberation Sans" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{code_identificacao}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="662" width="100" height="84" uuid="f1b7795c-f454-490c-990f-be1f3ad0620a"/>
 				<textElement textAlignment="Right">
-					<font fontName="Arial"/>
+					<font fontName="Liberation Sans"/>
 				</textElement>
 				<text><![CDATA[Este QRCode pode
 ser lido por
@@ -736,42 +736,42 @@ página de validação]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="Liberation Sans" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Código de Autenticação]]></text>
 			</staticText>
 			<textField pattern="dd/MM /yyyy hh:mm:ss">
 				<reportElement x="396" y="726" width="142" height="20" uuid="f9799d0d-9c5f-4e2a-a1c0-a9d43095f904"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="334" y="726" width="61" height="21" uuid="4aeb95ee-4410-484e-b127-efd34d4ae6a3"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<text><![CDATA[emitido em]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="88" y="615" width="400" height="18" uuid="7f9e764d-de34-403a-98d7-304b74a8fbc4"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="Liberation Sans" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[NAGIB JORGE FERES]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="88" y="634" width="400" height="18" uuid="3c028e46-a03b-4cf0-aba1-b097691eb79a"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="14"/>
+					<font fontName="Liberation Sans" size="14"/>
 				</textElement>
 				<text><![CDATA[Presidente]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="39" width="556" height="73" uuid="fc91d098-6dc9-4c16-8a7f-5d4b29da3676"/>
 				<textElement textAlignment="Justified">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
 				<text><![CDATA[CLUBE DE ATIRADORES DO MARANHÃO – CLAM, inscrito no CNPJ/MF sob o nº 02.322.509/0001-86 e Certificado de Registro nº 1363/MA – SFPC/8ª RM, com sede na Rua Afonso Pena, 291 – Centro, CEP: 65010-030, São Luis - MA, DECLARA,  para  fim   de comprovação de habitualidade de prática de ]]></text>
@@ -779,7 +779,7 @@ página de validação]]></text>
 			<staticText>
 				<reportElement x="-1" y="14" width="556" height="20" uuid="b06f953e-2bb9-4902-bcfb-68a0eb3e229c"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="14" isBold="true"/>
+					<font fontName="Liberation Sans" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[DECLARAÇÃO DE HABITUALIDADE]]></text>
 			</staticText>
@@ -1116,7 +1116,7 @@ página de validação]]></text>
 			<staticText>
 				<reportElement x="2" y="156" width="555" height="15" uuid="326359fe-5494-4e31-8629-f2be64a030de"/>
 				<textElement>
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<text><![CDATA[Participou dos seguintes treinamentos ou competições nesta entidade de tiro.]]></text>
 			</staticText>

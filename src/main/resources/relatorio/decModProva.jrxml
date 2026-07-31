@@ -88,7 +88,7 @@ where nome  like $P{nome} and id_decmodprova = $P{id_decmodprova}]]>
 			<staticText>
 				<reportElement x="-20" y="30" width="595" height="18" uuid="a540b133-1c11-4be1-814d-4585b7567c5c"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="14" isBold="true"/>
+					<font fontName="Liberation Sans" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CLAM - CLUBE DE ATIRADORES DO MARANHÃO]]></text>
 			</staticText>
@@ -114,7 +114,7 @@ where nome  like $P{nome} and id_decmodprova = $P{id_decmodprova}]]>
 			<staticText>
 				<reportElement x="-1" y="127" width="559" height="52" uuid="30377e06-896f-432c-9b3e-09801fd22f04"/>
 				<textElement textAlignment="Justified">
-					<font fontName="Arial" size="14"/>
+					<font fontName="Liberation Sans" size="14"/>
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
 				<text><![CDATA[         CLUBE DE ATIRADORES DO MARANHÃO – CLAM, inscrito no CNPJ/MF sob o nº 02.322.509/0001-86  e  Certificado  de  Registro nº 1363/MA   –   SFPC/8ª RM, com sede]]></text>
@@ -122,7 +122,7 @@ where nome  like $P{nome} and id_decmodprova = $P{id_decmodprova}]]>
 			<staticText>
 				<reportElement x="0" y="79" width="555" height="20" uuid="7111c493-8d7c-4fb4-a369-458c45c88da0"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="16" isBold="true"/>
+					<font fontName="Liberation Sans" size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[DECLARAÇÃO DE MODALIDADE E PROVA]]></text>
 			</staticText>
@@ -138,21 +138,21 @@ where nome  like $P{nome} and id_decmodprova = $P{id_decmodprova}]]>
 			<staticText>
 				<reportElement x="0" y="306" width="130" height="21" uuid="5a121d8a-a72d-4e4a-ac4b-853649a49f48"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<text><![CDATA[PROVA]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="131" y="307" width="124" height="21" uuid="0354b2e5-dfdc-459c-9796-bbb2f90f41e3"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<text><![CDATA[MODALIDADE]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="257" y="307" width="294" height="21" uuid="5c52cf36-4ffa-496b-a36a-71f524304b74"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<text><![CDATA[ARMAMENTO]]></text>
 			</staticText>
@@ -228,21 +228,21 @@ where nome  like $P{nome} and id_decmodprova = $P{id_decmodprova}]]>
 			<staticText>
 				<reportElement x="0" y="472" width="261" height="20" uuid="248a692f-8e42-411d-95a5-4b7e780900ac"/>
 				<textElement>
-					<font fontName="Arial" size="14"/>
+					<font fontName="Liberation Sans" size="14"/>
 				</textElement>
 				<text><![CDATA[Esta declaração tem validade de 90 dias.]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="280" y="522" width="198" height="24" uuid="8c351bd1-36a2-49b6-99fe-9df0e06928d6"/>
 				<textElement>
-					<font fontName="Arial" size="14"/>
+					<font fontName="Liberation Sans" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dataatual}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="210" y="522" width="66" height="24" uuid="7761d356-e586-4715-b0dd-facfaadcb7ec"/>
 				<textElement>
-					<font fontName="Arial" size="14"/>
+					<font fontName="Liberation Sans" size="14"/>
 				</textElement>
 				<text><![CDATA[São Luís,]]></text>
 			</staticText>
@@ -255,14 +255,14 @@ where nome  like $P{nome} and id_decmodprova = $P{id_decmodprova}]]>
 			<textField>
 				<reportElement x="323" y="683" width="199" height="16" uuid="87ff3613-7967-402d-9317-f947bbff28bd"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="Liberation Sans" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{code_identificacao}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="2" y="654" width="100" height="88" uuid="8f369afd-38d8-416a-9aac-9d0b5324ddad"/>
 				<textElement textAlignment="Right">
-					<font fontName="Arial"/>
+					<font fontName="Liberation Sans"/>
 				</textElement>
 				<text><![CDATA[Este QRCode pode
 ser lido por
@@ -275,133 +275,133 @@ página de validação]]></text>
 			<staticText>
 				<reportElement x="323" y="663" width="200" height="20" uuid="95264838-b069-43fc-8371-4c77c3ec5591"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="Liberation Sans" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Código de Autenticação]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="2" y="329" width="128" height="13" uuid="9f1df9d0-435d-4925-92a8-249c8d62cf56"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[Revolver calibre menor]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="135" y="330" width="120" height="13" uuid="c17c5037-7a36-4c5d-9a19-cea5e65935ef"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[Duelo 20 segundos]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="258" y="330" width="301" height="13" uuid="56a70276-a3ea-4a1f-ae34-25f0cfe2de5a"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[.22LR ,6.35 mm, 32 SW]]></text>
 			</staticText>
 			<staticText>
 				<reportElement positionType="Float" x="258" y="345" width="301" height="13" uuid="252fa461-5154-4439-a001-5f49523775c0"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[.38SPL, 357mag, 9mm, 40Sw .410, 357, 44-40 win, 44 ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="135" y="345" width="118" height="29" uuid="e2f145e5-e5b3-4725-b6ca-536de11bae32"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[Duelo 20 segundos]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="2" y="344" width="128" height="29" uuid="a113e944-cdb3-4a68-a28b-44f281d0c102"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[Revolver calibre maior]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="375" width="128" height="13" uuid="9df38c9c-9a00-4bd1-8991-a247383cf1ae"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[Revolver snub 2” e 3”]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="134" y="376" width="120" height="13" uuid="0e1dfa22-465c-4666-8bd7-ffca1ad08fa4"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[Duelo 20 segundos]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="256" y="376" width="305" height="13" uuid="810c817b-2fbe-4b56-828b-485fab916d48"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[.38 SPL       357mag]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="134" y="391" width="120" height="13" uuid="f400bc90-3c47-4ccb-a3f9-5112ac06a3d8"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[Duelo 20 segundos]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="256" y="391" width="302" height="13" uuid="9bd920bf-6553-4a97-a71a-493855c6ac50"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[.22LR ,6.35 mm, 32 SW]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="390" width="128" height="13" uuid="fba9c22a-9a25-4b40-904e-1e01563e6e90"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[Pistola calibre menor]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="134" y="405" width="120" height="13" uuid="c4871fc6-e653-4280-888b-64c4eb42bf5b"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[Duelo 20 segundos]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="254" y="405" width="305" height="13" uuid="bbbdc4b4-f438-4673-bd07-5d1e99e7d177"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[38 super auto, 380ACP .40sw, .45auto, 10 mm ,9mm, 357sig.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="404" width="128" height="13" uuid="8923f979-ed4e-48f9-bc14-0e9135abe885"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[Pistola calibre maior]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="258" y="421" width="300" height="13" uuid="22669191-3222-4e07-a6c2-1bb2614a4532"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[.22 LR]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="420" width="128" height="13" uuid="f4f56a51-cbd0-4dcb-b1ed-3159151f97fc"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[Carabina mira aberta especial]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="134" y="421" width="120" height="13" uuid="e89bed54-9341-4f51-8bbd-45b068298651"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[Duelo 20 segundos]]></text>
 			</staticText>
@@ -418,42 +418,42 @@ página de validação]]></text>
 			<staticText>
 				<reportElement x="0" y="436" width="128" height="13" uuid="69d8c43e-3be0-436b-b4de-e69a3162b4e5"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[Carabina mira aberta especial]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="133" y="437" width="120" height="13" uuid="f12efa2f-a53a-4f2a-b8f8-a2b38bd9c128"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[Duelo 20 segundos]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="257" y="436" width="303" height="13" uuid="bf76e367-b7e9-40c6-8b4b-97e0adbeceb2"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[32sw, 38SPL, 375mag e 44/40 win]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="2" y="450" width="128" height="13" uuid="b14c8699-48a8-4b9c-9c50-8dfe8caff201"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[Tiro de Defesa especial]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="133" y="451" width="120" height="13" uuid="7ed2b6c4-19f1-4009-8214-d74e157c5f0f"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[Duelo 20 segundos]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="258" y="451" width="301" height="13" uuid="075347ab-99a7-4b44-ba9f-23b2d744ff1c"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[Espingarda 16, 28, 20,36 ou12 GA]]></text>
 			</staticText>
@@ -466,21 +466,21 @@ página de validação]]></text>
 			<staticText>
 				<reportElement positionType="Float" x="259" y="359" width="301" height="13" uuid="bb4ef1ce-e51d-41bd-a1ae-638a1d4a4883"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Liberation Sans" size="11"/>
 				</textElement>
 				<text><![CDATA[Mag, 45colt, ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="80" y="575" width="400" height="18" uuid="03c33c30-e79b-4acd-b35a-b2870f021a54"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="14" isBold="true"/>
+					<font fontName="Liberation Sans" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[NAGIB JORGE FERES]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="80" y="594" width="400" height="18" uuid="198c2445-3b72-4948-ac0d-2a037eca35c7"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="14"/>
+					<font fontName="Liberation Sans" size="14"/>
 				</textElement>
 				<text><![CDATA[Presidente]]></text>
 			</staticText>
@@ -492,7 +492,7 @@ página de validação]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
-					<font fontName="Arial" size="14" isBold="false"/>
+					<font fontName="Liberation Sans" size="14" isBold="false"/>
 					<paragraph lineSpacing="1_1_2" lineSpacingSize="10.0" firstLineIndent="0" rightIndent="0" spacingAfter="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA["na  Rua   Afonso  Pena,  291 –  Centro, CEP: 65010-030,  São  Luis  -  MA,  mediante  a  solicitação  de"+" "+$F{nome}+","+"  "+"CR nº"+" "+$F{numcr}+","+" "+"está regularmente inscrito "+" "+"nesta Entidade sob o nº"+" "+$F{numclam}+","+" "+"datado desde"+" "+$F{dia}+" "+"de"+" "+$F{mes}+" "+"de"+" "+$F{ano}+" "+"e para fins de comprovação junto ao Exército Brasileiro, que promove ou sedia competições e provas de tiro conforme quadro abaixo:"]]></textFieldExpression>
@@ -500,14 +500,14 @@ página de validação]]></text>
 			<textField pattern="dd/MM /yyyy hh:mm:ss">
 				<reportElement x="382" y="702" width="142" height="20" uuid="cd05eaa8-268f-4e5c-84ae-0b8107ac2ddd"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="320" y="702" width="61" height="21" uuid="8b2edc97-7902-4e19-ac91-f583a0d1d877"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Liberation Sans" size="12"/>
 				</textElement>
 				<text><![CDATA[emitido em]]></text>
 			</staticText>

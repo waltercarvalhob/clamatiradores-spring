@@ -70,7 +70,7 @@ WHERE safe_to_date(aux.validade, 'DD/MM/YYYY') <= TO_DATE('30/10/2023','DD/MM/YY
 			<staticText>
 				<reportElement x="-20" y="52" width="842" height="18" uuid="14717a8a-bdd1-4c26-bfea-c70a4fca2a54"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="Liberation Sans" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CLAM - CLUBE DE ATIRADORES DO MARANHÃO]]></text>
 			</staticText>
@@ -97,7 +97,7 @@ WHERE safe_to_date(aux.validade, 'DD/MM/YYYY') <= TO_DATE('30/10/2023','DD/MM/YY
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#050505"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Times New Roman" size="12"/>
+					<font fontName="Liberation Serif" size="12"/>
 				</textElement>
 				<text><![CDATA[NOME]]></text>
 			</staticText>
@@ -110,7 +110,7 @@ WHERE safe_to_date(aux.validade, 'DD/MM/YYYY') <= TO_DATE('30/10/2023','DD/MM/YY
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#050505"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Times New Roman" size="12"/>
+					<font fontName="Liberation Serif" size="12"/>
 				</textElement>
 				<text><![CDATA[ENDEREÇO]]></text>
 			</staticText>
@@ -123,7 +123,7 @@ WHERE safe_to_date(aux.validade, 'DD/MM/YYYY') <= TO_DATE('30/10/2023','DD/MM/YY
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#050505"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Times New Roman" size="12"/>
+					<font fontName="Liberation Serif" size="12"/>
 				</textElement>
 				<text><![CDATA[CPF]]></text>
 			</staticText>
@@ -136,7 +136,7 @@ WHERE safe_to_date(aux.validade, 'DD/MM/YYYY') <= TO_DATE('30/10/2023','DD/MM/YY
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#050505"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Times New Roman" size="12"/>
+					<font fontName="Liberation Serif" size="12"/>
 				</textElement>
 				<text><![CDATA[CR]]></text>
 			</staticText>
@@ -149,7 +149,7 @@ WHERE safe_to_date(aux.validade, 'DD/MM/YYYY') <= TO_DATE('30/10/2023','DD/MM/YY
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#050505"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Times New Roman" size="12"/>
+					<font fontName="Liberation Serif" size="12"/>
 				</textElement>
 				<text><![CDATA[VALIDADE]]></text>
 			</staticText>
@@ -162,7 +162,7 @@ WHERE safe_to_date(aux.validade, 'DD/MM/YYYY') <= TO_DATE('30/10/2023','DD/MM/YY
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#050505"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Times New Roman" size="12"/>
+					<font fontName="Liberation Serif" size="12"/>
 				</textElement>
 				<text><![CDATA[SITUAÇÃO]]></text>
 			</staticText>
