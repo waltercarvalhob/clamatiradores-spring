@@ -6,7 +6,8 @@
 	<queryString language="SQL">
 		<![CDATA[SELECT nome, endereco, cpf, numcr, validade, situacao
 FROM socio
-WHERE UPPER(situacao) = 'INATIVO';]]>
+WHERE UPPER(situacao) = 'INATIVO'
+ORDER BY UPPER(TRIM(nome));]]>
 	</queryString>
 	<field name="nome" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="nome"/>
