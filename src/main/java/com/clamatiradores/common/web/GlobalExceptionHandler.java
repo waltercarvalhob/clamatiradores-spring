@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -35,18 +34,10 @@ public class GlobalExceptionHandler {
 		return "error/500";
 	}
 
-	/**
-	 * TEMPORARIO: mostra a classe/mensagem da excecao raiz na propria pagina de
-	 * erro pra diagnosticar uma falha que so acontece em producao (sem acesso
-	 * aos logs do Render nesta sessao). Reverter depois de identificar a causa -
-	 * nao e algo que deva ficar exposto ao usuario final permanentemente.
-	 */
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	@ExceptionHandler(ReportGenerationException.class)
-	public String handleReportGeneration(ReportGenerationException e, Model model) {
+	public String handleReportGeneration(ReportGenerationException e) {
 		log.error("Falha ao gerar relatorio", e);
-		Throwable raiz = e.getCause() != null ? e.getCause() : e;
-		model.addAttribute("erroDetalhe", raiz.getClass().getName() + ": " + raiz.getMessage());
 		return "error/500";
 	}
 

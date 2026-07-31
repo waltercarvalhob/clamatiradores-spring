@@ -241,7 +241,7 @@ WHERE UPPER(situacao) = 'INATIVO';]]>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{situacao}.toLowerCase()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{situacao}.toUpperCase()]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
