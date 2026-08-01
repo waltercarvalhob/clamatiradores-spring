@@ -8,7 +8,7 @@ COPY src ./src
 RUN mvn -B -q clean package -DskipTests
 
 # ---- Runtime stage ----
-FROM eclipse-temurin:17-jre
+FROM eclipse-temurin:25-jre
 WORKDIR /app
 
 # Os relatorios JasperReports (.jrxml) usam fontName="Arial"/"Times New Roman".
