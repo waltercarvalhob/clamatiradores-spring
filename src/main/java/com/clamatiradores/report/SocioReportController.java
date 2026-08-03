@@ -59,11 +59,13 @@ public class SocioReportController {
 			String dataAbreviada) {
 		// JasperFillManager preenche parametros internos (ex.: REPORT_CONNECTION) no mapa
 		// recebido, entao precisa ser mutavel - Map.of() lanca UnsupportedOperationException.
+		// Filtro opcional via LIKE + '%' (nao "$P{x} IS NULL OR ...") pra seguir o mesmo
+		// padrao ja usado e comprovado em clamAtiradoesRel.jrxml.
 		Map<String, Object> params = new HashMap<>();
-		params.put("dia", doisDigitos(dia));
-		params.put("mes", doisDigitos(mes));
-		params.put("ano", StringUtils.hasText(ano) ? ano.trim() : null);
-		params.put("dataAbreviada", StringUtils.hasText(dataAbreviada) ? dataAbreviada.trim() : null);
+		params.put("dia", StringUtils.hasText(dia) ? doisDigitos(dia) : "%");
+		params.put("mes", StringUtils.hasText(mes) ? doisDigitos(mes) : "%");
+		params.put("ano", StringUtils.hasText(ano) ? ano.trim() : "%");
+		params.put("dataAbreviada", StringUtils.hasText(dataAbreviada) ? "%" + dataAbreviada.trim() + "%" : "%");
 		byte[] pdf = reportService.generatePdf(reportName, params);
 		return respond(pdf, filename);
 	}

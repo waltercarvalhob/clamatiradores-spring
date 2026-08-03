@@ -11,10 +11,10 @@
 		<![CDATA[SELECT nome, endereco, cpf, numcr, validade, situacao
 FROM socio
 WHERE UPPER(situacao) = 'ATIVO'
-AND ($P{dia} IS NULL OR SUBSTRING(validade, 1, 2) = $P{dia})
-AND ($P{mes} IS NULL OR SUBSTRING(validade, 4, 2) = $P{mes})
-AND ($P{ano} IS NULL OR SUBSTRING(validade, 7, 4) = $P{ano})
-AND ($P{dataAbreviada} IS NULL OR validade LIKE '%' || $P{dataAbreviada} || '%')
+AND COALESCE(SUBSTRING(validade, 1, 2), '') LIKE $P{dia}
+AND COALESCE(SUBSTRING(validade, 4, 2), '') LIKE $P{mes}
+AND COALESCE(SUBSTRING(validade, 7, 4), '') LIKE $P{ano}
+AND COALESCE(validade, '') LIKE $P{dataAbreviada}
 ORDER BY UPPER(TRIM(nome));]]>
 	</queryString>
 	<field name="nome" class="java.lang.String">
