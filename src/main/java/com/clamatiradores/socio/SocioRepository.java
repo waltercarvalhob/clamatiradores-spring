@@ -29,13 +29,20 @@ public interface SocioRepository extends JpaRepository<Socio, Integer>, JpaSpeci
 			+ "AND safe_to_date(validade, 'DD/MM/YYYY') IS NOT NULL "
 			+ "AND safe_to_date(validade, 'DD/MM/YYYY') < now() + INTERVAL '10 days' "
 			+ "AND (:nome IS NULL OR nome ILIKE CONCAT('%', :nome, '%')) "
+			+ "AND (:mes IS NULL OR SUBSTRING(validade, 4, 2) = :mes) "
+			+ "AND (:dia IS NULL OR SUBSTRING(validade, 1, 2) = :dia) "
+			+ "AND (:dataAbreviada IS NULL OR validade LIKE CONCAT('%', :dataAbreviada, '%')) "
 			+ "ORDER BY ABS(safe_to_date(validade, 'DD/MM/YYYY') - CURRENT_DATE) ASC",
 			countQuery = "SELECT count(*) FROM socio WHERE validade LIKE CONCAT('%/', :ano) "
 					+ "AND CHAR_LENGTH(validade) = 10 "
 					+ "AND safe_to_date(validade, 'DD/MM/YYYY') IS NOT NULL "
 					+ "AND safe_to_date(validade, 'DD/MM/YYYY') < now() + INTERVAL '10 days' "
-					+ "AND (:nome IS NULL OR nome ILIKE CONCAT('%', :nome, '%'))",
+					+ "AND (:nome IS NULL OR nome ILIKE CONCAT('%', :nome, '%')) "
+					+ "AND (:mes IS NULL OR SUBSTRING(validade, 4, 2) = :mes) "
+					+ "AND (:dia IS NULL OR SUBSTRING(validade, 1, 2) = :dia) "
+					+ "AND (:dataAbreviada IS NULL OR validade LIKE CONCAT('%', :dataAbreviada, '%'))",
 			nativeQuery = true)
-	Page<Socio> findVencimentos(@Param("ano") String ano, @Param("nome") String nome, Pageable pageable);
+	Page<Socio> findVencimentos(@Param("ano") String ano, @Param("nome") String nome, @Param("mes") String mes,
+			@Param("dia") String dia, @Param("dataAbreviada") String dataAbreviada, Pageable pageable);
 
 }

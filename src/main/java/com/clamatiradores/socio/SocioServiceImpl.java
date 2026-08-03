@@ -61,10 +61,14 @@ public class SocioServiceImpl implements SocioService {
 	}
 
 	@Override
-	public Page<VencimentoItem> vencimentos(String ano, String nome, Pageable pageable) {
+	public Page<VencimentoItem> vencimentos(String ano, String nome, String mes, String dia, String dataAbreviada,
+			Pageable pageable) {
 		String nomeFiltro = StringUtils.hasText(nome) ? nome.trim() : null;
+		String mesFiltro = doisDigitos(mes);
+		String diaFiltro = doisDigitos(dia);
+		String dataAbreviadaFiltro = StringUtils.hasText(dataAbreviada) ? dataAbreviada.trim() : null;
 		LocalDate hoje = LocalDate.now();
-		return socioRepository.findVencimentos(ano, nomeFiltro, pageable)
+		return socioRepository.findVencimentos(ano, nomeFiltro, mesFiltro, diaFiltro, dataAbreviadaFiltro, pageable)
 				.map(socio -> new VencimentoItem(socio, isVencido(socio, hoje)));
 	}
 
@@ -74,6 +78,19 @@ public class SocioServiceImpl implements SocioService {
 		} catch (Exception e) {
 			return false;
 		}
+	}
+
+	/**
+	 * A validade e armazenada como texto "DD/MM/YYYY" sempre com dois digitos -
+	 * "5" digitado no filtro de dia/mes precisa virar "05" pra bater com o
+	 * SUBSTRING usado na consulta.
+	 */
+	private String doisDigitos(String valor) {
+		if (!StringUtils.hasText(valor)) {
+			return null;
+		}
+		String limpo = valor.trim();
+		return limpo.length() == 1 ? "0" + limpo : limpo;
 	}
 
 }

@@ -7,31 +7,91 @@
 <body>
 <div layout:fragment="content">
 
-	<div class="d-flex flex-wrap justify-content-between align-items-start mb-4 gap-2">
-		<div>
-			<h1 class="h3 mb-1">Vencimento de Socios</h1>
-			<p class="text-muted mb-0">
-				Socios com validade no ano selecionado que ja venceu ou vence nos proximos 10 dias.
-			</p>
-		</div>
-		<div class="d-flex flex-wrap gap-2">
-			<a class="btn btn-outline-primary" th:href="@{/socios/relatorios/ativo}" target="_blank" rel="noopener">Imprimir Ativos (PDF)</a>
-			<a class="btn btn-outline-secondary" th:href="@{/socios/relatorios/inativo}" target="_blank" rel="noopener">Imprimir Inativos (PDF)</a>
-		</div>
+	<div class="mb-4">
+		<h1 class="h3 mb-1">Vencimento de Socios</h1>
+		<p class="text-muted mb-0">
+			Socios com validade no ano selecionado que ja venceu ou vence nos proximos 10 dias.
+		</p>
+	</div>
+
+	<div class="card search-panel p-3 p-md-4 mb-4">
+		<div class="fw-semibold small text-muted mb-2">Imprimir relatorio de Ativos/Inativos (PDF)</div>
+		<form class="row g-2 align-items-end" method="get" th:action="@{/socios/relatorios/ativo}" target="_blank">
+			<div class="col-sm-6 col-md-2">
+				<label class="form-label small mb-1">Dia</label>
+				<input type="number" min="1" max="31" class="form-control" name="dia">
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<label class="form-label small mb-1">Mes</label>
+				<select class="form-select" name="mes">
+					<option value="">-</option>
+					<option value="01">Janeiro</option>
+					<option value="02">Fevereiro</option>
+					<option value="03">Marco</option>
+					<option value="04">Abril</option>
+					<option value="05">Maio</option>
+					<option value="06">Junho</option>
+					<option value="07">Julho</option>
+					<option value="08">Agosto</option>
+					<option value="09">Setembro</option>
+					<option value="10">Outubro</option>
+					<option value="11">Novembro</option>
+					<option value="12">Dezembro</option>
+				</select>
+			</div>
+			<div class="col-sm-6 col-md-2">
+				<label class="form-label small mb-1">Ano</label>
+				<input type="text" class="form-control" name="ano" maxlength="4" placeholder="2026">
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<label class="form-label small mb-1">Data abreviada</label>
+				<input type="text" class="form-control" name="dataAbreviada" placeholder="ex: 15/08 ou 08/2026">
+			</div>
+			<div class="col-md-2 d-flex gap-2">
+				<button type="submit" class="btn btn-outline-primary w-100">Ativos</button>
+				<button type="submit" th:formaction="@{/socios/relatorios/inativo}" class="btn btn-outline-secondary w-100">Inativos</button>
+			</div>
+		</form>
 	</div>
 
 	<div class="card search-panel p-3 p-md-4 mb-4">
 	<form class="row g-2 align-items-end" method="get" th:action="@{/socios/vencimento}">
-		<div class="col-sm-6 col-md-3">
+		<div class="col-sm-6 col-md-2">
 			<label class="form-label small mb-1">Ano</label>
 			<select class="form-select" name="ano">
 				<option th:each="a : ${anosDisponiveis}" th:value="${a}" th:text="${a}"
 						th:selected="${a.toString() == ano}"></option>
 			</select>
 		</div>
-		<div class="col-sm-6 col-md-4">
+		<div class="col-sm-6 col-md-2">
+			<label class="form-label small mb-1">Mes</label>
+			<select class="form-select" name="mes">
+				<option value="" th:selected="${#strings.isEmpty(mes)}">-</option>
+				<option value="01" th:selected="${mes == '01' or mes == '1'}">Janeiro</option>
+				<option value="02" th:selected="${mes == '02' or mes == '2'}">Fevereiro</option>
+				<option value="03" th:selected="${mes == '03' or mes == '3'}">Marco</option>
+				<option value="04" th:selected="${mes == '04' or mes == '4'}">Abril</option>
+				<option value="05" th:selected="${mes == '05' or mes == '5'}">Maio</option>
+				<option value="06" th:selected="${mes == '06' or mes == '6'}">Junho</option>
+				<option value="07" th:selected="${mes == '07' or mes == '7'}">Julho</option>
+				<option value="08" th:selected="${mes == '08' or mes == '8'}">Agosto</option>
+				<option value="09" th:selected="${mes == '09' or mes == '9'}">Setembro</option>
+				<option value="10" th:selected="${mes == '10'}">Outubro</option>
+				<option value="11" th:selected="${mes == '11'}">Novembro</option>
+				<option value="12" th:selected="${mes == '12'}">Dezembro</option>
+			</select>
+		</div>
+		<div class="col-sm-6 col-md-2">
+			<label class="form-label small mb-1">Dia</label>
+			<input type="number" min="1" max="31" class="form-control" name="dia" th:value="${dia}">
+		</div>
+		<div class="col-sm-6 col-md-3">
 			<label class="form-label small mb-1">Nome</label>
 			<input type="text" class="form-control" name="nome" th:value="${nome}">
+		</div>
+		<div class="col-sm-6 col-md-3">
+			<label class="form-label small mb-1">Data abreviada</label>
+			<input type="text" class="form-control" name="dataAbreviada" th:value="${dataAbreviada}" placeholder="ex: 15/08 ou 08/2026">
 		</div>
 		<div class="col-md-2 d-flex gap-2">
 			<button type="submit" class="btn btn-outline-primary w-100">Pesquisar</button>
@@ -74,15 +134,15 @@
 	<nav th:if="${itens.totalPages > 1}" aria-label="Paginacao">
 		<ul class="pagination flex-wrap" th:with="pages=${T(com.clamatiradores.common.web.Pagination).window(itens.number, itens.totalPages)}">
 			<li class="page-item" th:classappend="${itens.first} ? 'disabled'">
-				<a class="page-link" th:href="@{/socios/vencimento(page=${itens.number - 1}, size=${itens.size}, ano=${ano}, nome=${nome})}">&laquo;</a>
+				<a class="page-link" th:href="@{/socios/vencimento(page=${itens.number - 1}, size=${itens.size}, ano=${ano}, nome=${nome}, mes=${mes}, dia=${dia}, dataAbreviada=${dataAbreviada})}">&laquo;</a>
 			</li>
 			<li class="page-item" th:each="p : ${pages}"
 				th:classappend="${p == itens.number} ? 'active' : (${p == -1} ? 'disabled')">
 				<span th:if="${p == -1}" class="page-link">&hellip;</span>
-				<a th:unless="${p == -1}" class="page-link" th:href="@{/socios/vencimento(page=${p}, size=${itens.size}, ano=${ano}, nome=${nome})}" th:text="${p + 1}"></a>
+				<a th:unless="${p == -1}" class="page-link" th:href="@{/socios/vencimento(page=${p}, size=${itens.size}, ano=${ano}, nome=${nome}, mes=${mes}, dia=${dia}, dataAbreviada=${dataAbreviada})}" th:text="${p + 1}"></a>
 			</li>
 			<li class="page-item" th:classappend="${itens.last} ? 'disabled'">
-				<a class="page-link" th:href="@{/socios/vencimento(page=${itens.number + 1}, size=${itens.size}, ano=${ano}, nome=${nome})}">&raquo;</a>
+				<a class="page-link" th:href="@{/socios/vencimento(page=${itens.number + 1}, size=${itens.size}, ano=${ano}, nome=${nome}, mes=${mes}, dia=${dia}, dataAbreviada=${dataAbreviada})}">&raquo;</a>
 			</li>
 		</ul>
 	</nav>

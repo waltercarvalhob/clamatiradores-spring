@@ -19,6 +19,7 @@ public interface SocioService {
 
 	void delete(Integer id);
 
-	Page<VencimentoItem> vencimentos(String ano, String nome, Pageable pageable);
+	Page<VencimentoItem> vencimentos(String ano, String nome, String mes, String dia, String dataAbreviada,
+			Pageable pageable);
 
 }

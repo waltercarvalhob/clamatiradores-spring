@@ -7,6 +7,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,21 +24,24 @@ public class SocioReportController {
 	}
 
 	/**
-	 * Nota: socioAtivo.jrxml/socioInativo.jrxml nao declaram parametros (o filtro
-	 * ativo/inativo ja esta embutido no SQL do proprio relatorio), entao nenhum
-	 * parametro precisa ser passado aqui - assim como no servlet legado ServerRel_Ativo,
-	 * que passava nome/cpf/etc. mas o relatorio os ignorava.
+	 * Filtro proprio dos relatorios de Ativo/Inativo (dia/mes/ano de validade, ou uma
+	 * data abreviada tipo "15/08"/"08/2026") - independente do filtro da tela de
+	 * Vencimento de Socios. Todos opcionais: em branco imprime a lista completa.
 	 */
 	@GetMapping("/ativo")
 	@ResponseBody
-	public ResponseEntity<byte[]> ativo() {
-		return pdf("socioAtivo", "socios-ativos.pdf");
+	public ResponseEntity<byte[]> ativo(@RequestParam(required = false) String dia,
+			@RequestParam(required = false) String mes, @RequestParam(required = false) String ano,
+			@RequestParam(required = false) String dataAbreviada) {
+		return pdf("socioAtivo", "socios-ativos.pdf", dia, mes, ano, dataAbreviada);
 	}
 
 	@GetMapping("/inativo")
 	@ResponseBody
-	public ResponseEntity<byte[]> inativo() {
-		return pdf("socioInativo", "socios-inativos.pdf");
+	public ResponseEntity<byte[]> inativo(@RequestParam(required = false) String dia,
+			@RequestParam(required = false) String mes, @RequestParam(required = false) String ano,
+			@RequestParam(required = false) String dataAbreviada) {
+		return pdf("socioInativo", "socios-inativos.pdf", dia, mes, ano, dataAbreviada);
 	}
 
 	@GetMapping("/clam")
@@ -51,11 +55,30 @@ public class SocioReportController {
 		return respond(pdf, "relatorio-geral.pdf");
 	}
 
-	private ResponseEntity<byte[]> pdf(String reportName, String filename) {
+	private ResponseEntity<byte[]> pdf(String reportName, String filename, String dia, String mes, String ano,
+			String dataAbreviada) {
 		// JasperFillManager preenche parametros internos (ex.: REPORT_CONNECTION) no mapa
 		// recebido, entao precisa ser mutavel - Map.of() lanca UnsupportedOperationException.
-		byte[] pdf = reportService.generatePdf(reportName, new HashMap<>());
+		Map<String, Object> params = new HashMap<>();
+		params.put("dia", doisDigitos(dia));
+		params.put("mes", doisDigitos(mes));
+		params.put("ano", StringUtils.hasText(ano) ? ano.trim() : null);
+		params.put("dataAbreviada", StringUtils.hasText(dataAbreviada) ? dataAbreviada.trim() : null);
+		byte[] pdf = reportService.generatePdf(reportName, params);
 		return respond(pdf, filename);
+	}
+
+	/**
+	 * A validade e armazenada como texto "DD/MM/YYYY" sempre com dois digitos -
+	 * "5" digitado no filtro de dia/mes precisa virar "05" pra bater com o
+	 * SUBSTRING usado na consulta do relatorio.
+	 */
+	private String doisDigitos(String valor) {
+		if (!StringUtils.hasText(valor)) {
+			return null;
+		}
+		String limpo = valor.trim();
+		return limpo.length() == 1 ? "0" + limpo : limpo;
 	}
 
 	private ResponseEntity<byte[]> respond(byte[] pdf, String filename) {
